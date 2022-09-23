@@ -1,0 +1,75 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    * {
+        @apply transition ease-in-out duration-150;
+    }
+    h1 {
+        @apply font-bold text-4xl;
+    }
+    h2 {
+        @apply font-semibold text-3xl;
+    }
+    h3 {
+        @apply text-2xl;
+    }
+    h4 {
+        @apply text-xl;
+    }
+    h5 {
+        @apply text-lg;
+    }
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-medium;
+    }
+
+    .custom__container {
+        @apply w-full max-w-screen-lg 2xl:max-w-screen-xl px-6 mx-auto;
+    }
+
+    .menu__list {
+        @apply flex items-center absolute md:relative;
+
+        .menu__item {
+            @apply relative flex items-center justify-center rounded uppercase text-sm font-semibold px-4 md:h-20 text-slate-600 dark:text-slate-400 hover:text-brand dark:hover:text-brand-300 space-x-2;
+
+            &::after {
+                content: "";
+                @apply h-1 absolute bottom-0 inset-x-0 rounded-t;
+            }
+
+            &.active {
+                @apply text-brand-400 hover:text-brand-400 dark:text-white dark:hover:text-white;
+
+                &::after {
+                @apply bg-brand-300;
+            }
+            }
+        }
+    }
+}
+
+h1,
+h2,
+h3 {
+    font-family: "Poppins", sans-serif;
+}
+
+input:invalid,
+textarea:invalid,
+select:invalid {
+    box-shadow: none;
+}
+
+[x-cloak] {
+    display: none;
+}
+
+.auth__layout {
+    background-image: url('/public/images/register-02.png');
+}
