@@ -4,6 +4,10 @@ window.Alpine = Alpine;
 
 const currentTheme = localStorage.getItem("theme");
 
+Alpine.data("dropdown", () => ({
+    dropdownOpen: false,
+}));
+
 Alpine.data("themeData", () => ({
     isDark: currentTheme
         ? currentTheme === "dark"

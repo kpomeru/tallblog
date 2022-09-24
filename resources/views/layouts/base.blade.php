@@ -32,6 +32,8 @@
             selection:bg-brand-200
         "
     >
+        <livewire:components.ui.notifications />
+        {{-- <x-loading-mask /> --}}
         @yield('body')
     </body>
 

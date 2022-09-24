@@ -1,4 +1,4 @@
-@section('title', 'Create a new account')
+@section('title', 'Get Tallking')
 
 <div class="space-y-8">
     <div class="text-center md:text-right">
@@ -38,24 +38,33 @@
                         <x-form.error :error="$message"></x-form.error>
                     @enderror
                 </div>
-{{--
 
-                <div class="mt-6">
-                    <label for="password_confirmation" class="block text-sm font-medium text-gray-700 leading-5">
+                <div class="space-y-1">
+                    <x-form.label for="password-confirmations">
                         Confirm Password
-                    </label>
+                    </x-form.label>
 
-                    <div class="mt-1 rounded-md shadow-sm">
-                        <input wire:model.lazy="passwordConfirmation" id="password_confirmation" type="password" required class="block w-full px-3 py-2 placeholder-gray-400 border border-gray-300 appearance-none rounded-md focus:outline-none focus:ring-blue focus:border-blue-300 transition duration-150 ease-in-out sm:text-sm sm:leading-5" />
-                    </div>
-                </div> --}}
+                    <x-form.text-input wire:model.lazy="passwordConfirmation" id="password-confirmations" :error="$errors->has('password')" type="password" required autofocus placeholder="********" />
 
-                <div class="mt-6">
-                    <span class="block w-full rounded-md shadow-sm">
-                        <button type="submit" class="flex justify-center w-full px-4 py-2 text-sm font-medium text-white bg-indigo-600 border border-transparent rounded-md hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:ring-indigo active:bg-indigo-700 transition duration-150 ease-in-out">
-                            Register
-                        </button>
-                    </span>
+                    @error('password')
+                        <x-form.error :error="$message"></x-form.error>
+                    @enderror
+                </div>
+
+                <div>
+                    <x-button wire:loading.attr="disabled" class="w-full group" type="submit">
+                        <x-spinner wire:loading.delay wire:target="register" />
+                        <span wire:loading.remove>Register</span>
+                        <i wire:loading.remove class="fas fa-arrow-right group-hover:translate-x-1"></i>
+                    </x-button>
+                </div>
+
+                <div>
+                    <x-button wire:loading.attr="disabled" class="w-full group" color="light">
+                        {{-- <x-spinner wire:loading.delay wire:target="register" /> --}}
+                        <img src="{{ asset('images/google.svg') }}" alt="Google logo">
+                        <span wire:loading.remove>Continue with Google</span>
+                    </x-button>
                 </div>
             </form>
         </x-card>

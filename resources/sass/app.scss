@@ -47,11 +47,58 @@
                 @apply text-brand-400 hover:text-brand-400 dark:text-white dark:hover:text-white;
 
                 &::after {
-                @apply bg-brand-300;
-            }
+                    @apply bg-brand-300;
+                }
             }
         }
     }
+
+    .auth__layout {
+        background-image: url("/public/images/register-02.png");
+
+        &::before {
+            content: "";
+            @apply absolute inset-0 dark:bg-black/25;
+        }
+    }
+
+    .animated__logo {
+        .is__animated {
+            animation: animate__fill 1s ease-in-out infinite;
+
+            &:nth-child(2) {
+                animation-delay: 250ms;
+            }
+            &:nth-child(3) {
+                animation-delay: 500ms;
+            }
+            &:nth-child(4) {
+                animation-delay: 750ms;
+            }
+        }
+    }
+
+    @keyframes animate__fill {
+        0% {
+            @apply fill-brand;
+        }
+        50% {
+            @apply fill-brand-200;
+        }
+        100% {
+            @apply fill-brand;
+        }
+    }
+
+    // .dropdown {
+    //     @apply group
+
+    //     .trigger {}
+
+    //     .content {
+    //         @apply rounded-md py-2 bg-slate-100 dark:bg-slate-800
+    //     }
+    // }
 }
 
 h1,
@@ -68,8 +115,4 @@ select:invalid {
 
 [x-cloak] {
     display: none;
-}
-
-.auth__layout {
-    background-image: url('/public/images/register-02.png');
 }
