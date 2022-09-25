@@ -43,7 +43,7 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getAvatarAttribute(): string
     {
-        return $this->avatar ?? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff";
+        return $this->avatar ?? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff&font-size=0.4";
     }
 
     public function getRegistrationProgressAttribute(): int

@@ -1,6 +1,6 @@
 @props(['type' => 'white', 'is_image' => false])
 
-<span {{ $attributes->merge(['class' => 'animate-spin']) }}>
+<span {{ $attributes->merge([]) }}>
     @if ($type === 'white')
         @if ($is_image)
             <x-spinner.image.white />

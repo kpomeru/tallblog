@@ -9,9 +9,9 @@
                 $file .= "-white";
             }
         @endphp
-        <img src="{{ asset($file . '.svg') }}" class="h-10 md:h-12" />
+        <img src="{{ asset($file . '.svg') }}" class="h-10 md:h-12" alt="TallBlog Logo" />
     @else
-        <img src="{{ asset('/images/tallblog-logomark.svg') }}" class="h-10 md:h-12 dark:hidden" />
-        <img src="{{ asset('/images/tallblog-logomark-white.svg') }}" class="h-10 md:h-12 hidden dark:block" />
+        <img src="{{ asset('/images/tallblog-logomark.svg') }}" class="h-10 md:h-12 dark:hidden" alt="TallBlog Logo" />
+        <img src="{{ asset('/images/tallblog-logomark-white.svg') }}" class="h-10 md:h-12 hidden dark:block" alt="TallBlog Logo" />
     @endisset
 </div>

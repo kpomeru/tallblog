@@ -2,6 +2,8 @@
 
 namespace App\Http\Middleware;
 
+use Closure;
+use Illuminate\Routing\Exceptions\InvalidSignatureException;
 use Illuminate\Routing\Middleware\ValidateSignature as Middleware;
 
 class ValidateSignature extends Middleware
@@ -19,4 +21,26 @@ class ValidateSignature extends Middleware
         // 'utm_source',
         // 'utm_term',
     ];
+
+    /**
+     * Handle an incoming request.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \Closure  $next
+     * @param  string|null  $relative
+     * @return \Illuminate\Http\Response
+     *
+     * @throws \Illuminate\Routing\Exceptions\InvalidSignatureException
+     */
+    public function handle($request, Closure $next, $relative = null)
+    {
+        $ignore = property_exists($this, 'except') ? $this->except : $this->ignore;
+
+        if ($request->hasValidSignatureWhileIgnoring($ignore, $relative !== 'relative')) {
+            return $next($request);
+        }
+
+        session()->flash('error', "Expired/Invalid signature, please generate a new verification email.");
+        return redirect(route('verification.notice'));
+    }
 }
