@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Auth\Passwords;
+namespace App\Http\Livewire\Pages\Auth\Passwords;
 
 use App\Providers\RouteServiceProvider;
 use Livewire\Component;
@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
 use Illuminate\Auth\Events\PasswordReset;
 
-class Reset extends Component
+class ResetPage extends Component
 {
     /** @var string */
     public $token;
@@ -26,6 +26,10 @@ class Reset extends Component
 
     public function mount($token)
     {
+        if (auth()->check()) {
+            return redirect(route('home'));
+        }
+
         $this->email = request()->query('email', '');
         $this->token = $token;
     }
@@ -88,6 +92,6 @@ class Reset extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.reset')->extends('layouts.auth');
+        return view('livewire.pages.auth.passwords.reset-page')->extends('layouts.auth');
     }
 }

@@ -14,13 +14,13 @@ class RegisterPage extends Component
     use UserTrait;
 
     /** @var string */
-    public $email = 'john@example.test';
+    public $email = '';
 
     /** @var string */
-    public $password = '12345678';
+    public $password = '';
 
     /** @var string */
-    public $passwordConfirmation = '12345678';
+    public $passwordConfirmation = '';
 
     public function register()
     {

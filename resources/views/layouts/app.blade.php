@@ -3,9 +3,11 @@
 @section('body')
     <livewire:components.ui.header />
 
-    @if (auth()->user()->registration_progress < 4)
-        <x-register.progress-checker />
-    @endif
+    @auth
+        @if (auth()->user()->registration_progress < 4)
+            <x-register.progress-checker />
+        @endif
+    @endauth
 
     @yield('content')
 

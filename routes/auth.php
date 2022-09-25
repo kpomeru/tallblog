@@ -2,10 +2,10 @@
 
 use App\Http\Controllers\Auth\EmailVerificationController;
 use App\Http\Controllers\Auth\LogoutController;
-use App\Http\Livewire\Auth\Passwords\Confirm;
-use App\Http\Livewire\Auth\Passwords\Email;
-use App\Http\Livewire\Auth\Passwords\Reset;
 use App\Http\Livewire\Pages\Auth\LoginPage;
+use App\Http\Livewire\Pages\Auth\Passwords\ConfirmPage;
+use App\Http\Livewire\Pages\Auth\Passwords\EmailPage;
+use App\Http\Livewire\Pages\Auth\Passwords\ResetPage;
 use App\Http\Livewire\Pages\Auth\RegisterPage;
 use App\Http\Livewire\Pages\Auth\VerifyPage;
 use Illuminate\Support\Facades\Route;
@@ -18,10 +18,10 @@ Route::middleware('guest')->group(function () {
         ->name('register');
 });
 
-Route::get('password/reset', Email::class)
+Route::get('password/reset', EmailPage::class)
     ->name('password.request');
 
-Route::get('password/reset/{token}', Reset::class)
+Route::get('password/reset/{token}', ResetPage::class)
     ->name('password.reset');
 
 Route::middleware('auth')->group(function () {
@@ -29,7 +29,7 @@ Route::middleware('auth')->group(function () {
         // ->middleware('throttle:6,1')
         ->name('verification.notice');
 
-    Route::get('password/confirm', Confirm::class)
+    Route::get('password/confirm', ConfirmPage::class)
         ->name('password.confirm');
 });
 

@@ -1,17 +1,24 @@
 <?php
 
-namespace App\Http\Livewire\Auth\Passwords;
+namespace App\Http\Livewire\Pages\Auth\Passwords;
 
-use Livewire\Component;
 use Illuminate\Support\Facades\Password;
+use Livewire\Component;
 
-class Email extends Component
+class EmailPage extends Component
 {
     /** @var string */
     public $email;
 
     /** @var string|null */
     public $emailSentMessage = false;
+
+    public function mount()
+    {
+        if (auth()->check()) {
+            return redirect(route('home'));
+        }
+    }
 
     public function sendResetPasswordLink()
     {
@@ -23,7 +30,6 @@ class Email extends Component
 
         if ($response == Password::RESET_LINK_SENT) {
             $this->emailSentMessage = trans($response);
-
             return;
         }
 
@@ -42,6 +48,6 @@ class Email extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.email')->extends('layouts.auth');
+        return view('livewire.pages.auth.passwords.email-page')->extends('layouts.auth');
     }
 }

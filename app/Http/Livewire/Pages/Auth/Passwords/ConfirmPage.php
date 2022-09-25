@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Livewire\Auth\Passwords;
+namespace App\Http\Livewire\Pages\Auth\Passwords;
 
 use Livewire\Component;
 
-class Confirm extends Component
+class ConfirmPage extends Component
 {
     /** @var string */
     public $password = '';
@@ -22,6 +22,6 @@ class Confirm extends Component
 
     public function render()
     {
-        return view('livewire.auth.passwords.confirm')->extends('layouts.auth');
+        return view('livewire.pages.auth.passwords.confirm-page')->extends('layouts.auth');
     }
 }

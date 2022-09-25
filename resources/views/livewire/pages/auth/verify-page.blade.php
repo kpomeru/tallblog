@@ -1,4 +1,5 @@
 @section('title', 'Verify your email address')
+
 <div class="space-y-6">
     <div class="text-center md:text-right">
         <h6>
@@ -10,10 +11,12 @@
     </div>
 
     <div class="mx-auto w-full sm:max-w-sm md:max-w-md space-y-4">
+        <x-register.steps />
         <x-card class="md:translate-x-32 overflow-hidden">
-            <div wire:loading wire:target="resend" class="bg-white/75 absolute inset-0">
+            <div wire:loading wire:target="resend" class="bg-white/75 dark:bg-slate-800/75 absolute inset-0">
                 <div class="flex items-center justify-center w-full h-full">
-                    <x-spinner type="black" />
+                    <x-spinner class="hidden dark:inline" />
+                    <x-spinner type="black" class="dark:hidden" />
                 </div>
             </div>
 
@@ -27,11 +30,11 @@
                 </div>
             @endif
 
-            <div class="text-sm text-gray-700">
+            <div class="text-sm">
                 <p>Before proceeding, please check your email for a verification link.</p>
 
                 <p class="mt-3">
-                    If you did not receive the email, <a wire:click="resend" class="text-brand-400 cursor-pointer hover:text-brand-300 focus:outline-none focus:underline transition ease-in-out duration-150 font-medium">click here to request another</a>.
+                    If you did not receive the email, <a wire:click="resend" class="text-brand-400 dark:text-brand-300 cursor-pointer hover:text-brand-300 dark:hover:text-brand-200 focus:outline-none focus:underline transition ease-in-out duration-150 font-medium">click here to request another</a>.
                 </p>
             </div>
         </x-card>
