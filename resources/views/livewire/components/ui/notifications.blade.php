@@ -93,7 +93,24 @@
         @mouseover="toggleMouseOver(true)"
         @mouseover.away="toggleMouseOver(false)"
     >
-        <div class="grow flex items-center justify-center w-full text-white" x-html="message"></div>
+        <div class="grow flex items-center justify-center w-full text-white space-x-2">
+            <span class="text-white rounded-md w-10 h-10 flex items-center justify-center" :class="{
+                'bg-rose-600': type === 'error',
+                'bg-emerald-600': type === 'success',
+                'bg-indigo-600': type === 'info',
+            }">
+                <template x-if="type === 'info'">
+                    <x-heroicon-o-information-circle class="w-5" />
+                </template>
+                <template x-if="type === 'error'">
+                    <x-heroicon-o-exclamation-triangle class="w-5" />
+                </template>
+                <template x-if="type === 'success'">
+                    <x-heroicon-o-check-circle class="w-5" />
+                </template>
+            </span>
+            <div x-html="message"></div>
+        </div>
         <div class="shrink-0">
             <span class="text-white w-6 h-6 flex items-center justify-center rounded-full border cursor-pointer"
                 :class="{
@@ -102,7 +119,7 @@
                 'bg-indigo-600 hover:bg-indigo-700 border-indigo-700': type === 'info',
             }" @click="clear">
                 <span x-text="timer" class="text-xs font-medium group-hover:hidden"></span>
-                <i class="fas fa-times hidden group-hover:inline"></i>
+                <x-heroicon-o-x-mark class="w-4 hidden group-hover:inline" />
             </span>
         </div>
         {{-- <span class="h-1 absolute bg-white/25 bottom-0 left-0 w-[80%]"></span> --}}

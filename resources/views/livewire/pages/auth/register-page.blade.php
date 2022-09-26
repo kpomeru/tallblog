@@ -55,16 +55,12 @@
                     <x-button wire:loading.attr="disabled" class="w-full group" type="submit">
                         <x-spinner wire:loading.delay wire:target="register" />
                         <span wire:loading.remove>Register</span>
-                        <i wire:loading.remove class="fas fa-arrow-right group-hover:translate-x-1"></i>
+                        <x-heroicon-s-arrow-right wire:loading.remove class="group-hover:translate-x-1 w-4" />
                     </x-button>
                 </div>
 
                 <div>
-                    <x-button wire:loading.attr="disabled" class="w-full group" color="light">
-                        {{-- <x-spinner wire:loading.delay wire:target="register" /> --}}
-                        <img src="{{ asset('images/google.svg') }}" alt="Google logo">
-                        <span wire:loading.remove>Continue with Google</span>
-                    </x-button>
+                    <x-button.auth.google wire:loading.attr="disabled" />
                 </div>
             </form>
         </x-card>

@@ -3,12 +3,12 @@
 namespace App\Http\Livewire\Pages\Auth\Passwords;
 
 use App\Providers\RouteServiceProvider;
-use Livewire\Component;
-use Illuminate\Support\Str;
+use Illuminate\Auth\Events\PasswordReset;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Password;
-use Illuminate\Auth\Events\PasswordReset;
+use Illuminate\Support\Str;
+use Livewire\Component;
 
 class ResetPage extends Component
 {
@@ -26,9 +26,9 @@ class ResetPage extends Component
 
     public function mount($token)
     {
-        if (auth()->check()) {
-            return redirect(route('home'));
-        }
+        // if (auth()->check()) {
+        //     return redirect(route('home'));
+        // }
 
         $this->email = request()->query('email', '');
         $this->token = $token;

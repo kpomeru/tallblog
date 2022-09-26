@@ -1,4 +1,4 @@
-@props(['align' => 'right', 'width' => 'w-56'])
+@props(['align' => 'right', 'width' => 'w-48'])
 
 <div x-data="dropdown" class="group relative w-auto max-w-max" @mouseover.away="dropdownOpen = false">
     <div class="cursor-pointer flex items-center space-x-2" @click="dropdownOpen = !dropdownOpen">

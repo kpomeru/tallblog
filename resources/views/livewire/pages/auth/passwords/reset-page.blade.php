@@ -52,7 +52,7 @@
                     <x-button wire:loading.attr="disabled" class="w-full group" type="submit">
                         <x-spinner wire:loading.delay wire:target="resetPassword" />
                         <span wire:loading.remove>Reset password</span>
-                        <i wire:loading.remove class="fas fa-arrow-right group-hover:translate-x-1"></i>
+                        <x-heroicon-s-arrow-right wire:loading.remove class="group-hover:translate-x-1 w-4" />
                     </x-button>
                 </div>
             </form>

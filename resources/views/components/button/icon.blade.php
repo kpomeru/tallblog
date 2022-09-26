@@ -7,12 +7,16 @@
         $style = $style_override;
     } else {
         switch ($color) {
-            case 'light':
-                $style = "bg-white dark:text-slate-800 hover:border hover:border-slate-200";
-                break;
-
             case 'dark':
                 $style = "bg-slate-800 text-white hover:bg-slate-700 active:bg-slate-700";
+                break;
+
+            case 'light':
+                $style = "bg-white dark:text-slate-800 border hover:border hover:border-slate-200";
+                break;
+
+            case 'transparent':
+                $style = "border border-slate-100 dark:border-slate-800/50 hover:border-brand-400 dark:hover:border-brand-300 hover:text-brand-400 dark:hover:text-brand-300";
                 break;
 
             default:

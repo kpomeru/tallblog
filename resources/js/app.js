@@ -8,7 +8,18 @@ Alpine.data("dropdown", () => ({
     dropdownOpen: false,
 }));
 
+Alpine.data("loadingMask", () => ({
+    pageLoaded: false,
+    init() {
+        window.onload = (event) => {
+            this.pageLoaded = true
+        };
+    }
+}));
+
 Alpine.data("themeData", () => ({
+    categoryMenuOpen: false,
+
     isDark: currentTheme
         ? currentTheme === "dark"
         : window.matchMedia("(prefers-color-scheme: dark)").matches,

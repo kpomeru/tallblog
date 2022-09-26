@@ -13,12 +13,12 @@ class EmailPage extends Component
     /** @var string|null */
     public $emailSentMessage = false;
 
-    public function mount()
-    {
-        if (auth()->check()) {
-            return redirect(route('home'));
-        }
-    }
+    // public function mount()
+    // {
+    //     if (auth()->check()) {
+    //         return redirect(route('home'));
+    //     }
+    // }
 
     public function sendResetPasswordLink()
     {

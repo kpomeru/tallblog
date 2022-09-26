@@ -7,12 +7,16 @@
         $style = $style_override;
     } else {
         switch ($color) {
-            case 'light':
-                $style = "bg-white dark:text-slate-800 hover:border hover:border-slate-200";
-                break;
-
             case 'dark':
                 $style = "bg-slate-800 text-white hover:bg-slate-700 active:bg-slate-700";
+                break;
+
+            case 'light':
+                $style = "bg-white dark:text-slate-800 border hover:border hover:border-slate-200";
+                break;
+
+            case 'transparent':
+                $style = "border border-slate-100 dark:border-slate-800/50 hover:border-brand-400 dark:hover:border-brand-300 hover:text-brand-400 dark:hover:text-brand-300";
                 break;
 
             default:
@@ -22,6 +26,6 @@
     }
 ?>
 
-<button {{ $attributes->merge(['type' => 'button', 'class' => "inline-flex items-center justify-center space-x-2 h-10 px-4 rounded-md font-medium text-xs capitalize {$style} focus:ring focus:ring-offset-2 focus:outline-none ring-brand-200 dark:ring-brand-200/25 ring-offset-white dark:ring-offset-slate-900 disabled:opacity-50"]) }}>
+<button {{ $attributes->merge(['type' => 'button', 'class' => "inline-flex items-center justify-center space-x-2 h-10 px-4 rounded-md font-medium text-xs capitalize {$style} focus:ring focus:ring-offset-2 focus:outline-none ring-brand-200 dark:ring-brand-200/25 ring-offset-white dark:ring-offset-slate-900 disabled:opacity-50 disabled:cursor-not-allowed"]) }}>
     {{ $slot }}
 </button>

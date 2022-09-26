@@ -7,7 +7,7 @@ use Livewire\Component;
 class Notifications extends Component
 {
     /** @var string */
-    public $type = 'info';
+    public $type = '';
 
     /** @var string */
     public $message = '';

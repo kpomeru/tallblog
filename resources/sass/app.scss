@@ -32,11 +32,42 @@
         @apply w-full max-w-screen-lg 2xl:max-w-screen-xl px-6 mx-auto;
     }
 
+    .badge {
+        @apply bg-slate-200 text-slate-800;
+    }
+    .badge.flip {
+        @apply bg-slate-800 text-white;
+    }
+    .badge.success {
+        @apply bg-emerald-200 text-emerald-800;
+    }
+    .badge.success.flip {
+        @apply bg-emerald-800 text-emerald-200;
+    }
+    .badge.brand {
+        @apply bg-brand-200 text-brand-800;
+    }
+    .badge.brand.flip {
+        @apply bg-brand-800 text-brand-200;
+    }
+    .badge.blue {
+        @apply bg-blue-200 text-blue-800;
+    }
+    .badge.blue.flip {
+        @apply bg-blue-800 text-blue-200;
+    }
+    .badge.error {
+        @apply bg-rose-200 text-rose-800;
+    }
+    .badge.error.flip {
+        @apply bg-rose-800 text-rose-200;
+    }
+
     .menu__list {
         @apply flex items-center absolute md:relative;
 
         .menu__item {
-            @apply relative flex items-center justify-center rounded uppercase text-sm font-semibold px-4 md:h-20 text-slate-600 dark:text-slate-400 hover:text-brand dark:hover:text-brand-300 space-x-2;
+            @apply relative flex items-center justify-center rounded uppercase text-sm font-semibold px-4 md:h-20 text-slate-600 dark:text-slate-400 hover:text-brand dark:hover:text-brand-300;
 
             &::after {
                 content: "";
@@ -90,15 +121,22 @@
         }
     }
 
-    // .dropdown {
-    //     @apply group
+    .manage__menu__item {
+        @apply flex cursor-pointer px-4 md:px-6 py-4 capitalize relative text-sm font-medium space-x-2 items-center md:justify-center text-slate-500 hover:text-brand-400;
 
-    //     .trigger {}
+        &::after {
+            content: "";
+            @apply h-1 absolute -bottom-[2.25px] inset-x-0 rounded-full;
+        }
 
-    //     .content {
-    //         @apply rounded-md py-2 bg-slate-100 dark:bg-slate-800
-    //     }
-    // }
+        &.active {
+            @apply text-brand-400 hover:text-brand-400 dark:text-white dark:hover:text-white;
+
+            &::after {
+                @apply bg-brand-300;
+            }
+        }
+    }
 }
 
 h1,

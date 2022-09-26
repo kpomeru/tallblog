@@ -4,10 +4,11 @@
             <x-logo></x-logo>
         </div>
         <div class="menu__list">
-            <a class="menu__item @if(Route::currentRouteName() === 'home') active @endif" href="/" title="Go to homepage">
+            {{-- <a class="menu__item @if(Route::currentRouteName() === 'home') active @endif" href="/" title="Go to homepage">
                 <span>Home</span>
-            </a>
-            <a class="menu__item @if(Route::currentRouteName() === 'categories') active @endif" href="#">Categories</a>
+            </a> --}}
+
+            <x-categories />
 
             @guest
                 @if (Route::has('login'))
@@ -22,24 +23,7 @@
         <div class="flex space-x-2 items-center justify-end">
             <x-theme-switch :has-override="true" />
             @auth
-                <x-dropdown>
-                    <x-slot:trigger>
-                        <div class="rounded-full p-1 pr-3 flex items-center space-x-2 bg-brand-100 hover:bg-white dark:bg-slate-800 dark:hover:bg-slate-700 h-10">
-                            <x-avatar class="w-8 rounded-full"></x-avatar>
-                            <span class="font-medium text-sm">
-                                {{ auth()->user()->username }}
-                            </span>
-                        </div>
-                    </x-slot:trigger>
-
-                    <x-slot:content>
-                        <a class="text-sm block px-3 md:px-4 py-2" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Come back soon">Log out</a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            @csrf
-                        </form>
-                    </x-slot:content>
-                </x-dropdown>
+                <x-header-user-menu />
             @endauth
         </div>
     </div>

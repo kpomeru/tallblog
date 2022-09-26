@@ -17,7 +17,7 @@
 
         <link rel="icon" href="{{ asset('/images/favicon.png') }}" />
 
-        <script src="https://kit.fontawesome.com/e124e9c874.js" crossorigin="anonymous"></script>
+        {{-- <script src="https://kit.fontawesome.com/e124e9c874.js" crossorigin="anonymous"></script> --}}
         @vite(['resources/sass/app.scss', 'resources/js/app.js'])
         @livewireStyles
         @livewireScripts
@@ -33,8 +33,7 @@
         "
     >
         <livewire:components.ui.notifications />
-        {{-- <x-loading-mask /> --}}
+        <x-loading-mask />
         @yield('body')
     </body>
-
 </html>
