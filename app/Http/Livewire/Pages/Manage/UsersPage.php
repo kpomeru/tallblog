@@ -54,8 +54,8 @@ class UsersPage extends Component
                 ->orWhere('role', 'like', '%' . $v . '%')
                 ->orWhere('username', 'like', '%' . $v . '%')
                 ->orWhere('created_at', 'like', '%' . $v . '%')
-                ->orWhere('email', 'like', '%' . $v . '%'));
+                ->orWhere('email', 'like', '%' . $v . '%'))->withTrashed();
 
-        return $this->applySorting($query, 'created_at', 'desc');
+        return $this->applySorting($query, 'username', 'asc');
     }
 }

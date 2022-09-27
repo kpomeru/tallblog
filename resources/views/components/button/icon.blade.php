@@ -24,8 +24,10 @@
                 break;
         }
     }
+
+    $ring = $color !== 'transparent' ? "focus:ring focus:ring-offset-2 focus:outline-none ring-brand-200 dark:ring-brand-200/25 ring-offset-white dark:ring-offset-slate-900" : "focus:shadow-lg";
 ?>
 
-<button {{ $attributes->merge(['type' => 'button', 'class' => "inline-flex items-center justify-center h-10 w-10  rounded-md text-xs {$style} focus:ring focus:ring-offset-2 focus:outline-none ring-brand-200 dark:ring-brand-200/25 ring-offset-white dark:ring-offset-slate-900 disabled:opacity-50"]) }}>
+<button {{ $attributes->merge(['type' => 'button', 'class' => "inline-flex items-center justify-center h-10 w-10  rounded-md text-xs {$style} {$ring} disabled:opacity-50 disabled:cursor-not-allowed"]) }}>
     {{ $slot }}
 </button>

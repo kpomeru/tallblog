@@ -10,6 +10,6 @@
 
 <input {{ $attributes->merge([
         'type' => "text",
-        'class' => "appearance-none block w-full px-3 sm:px-4 flex items-center h-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-300/50 transition duration-150 ease-in-out sm:text-sm sm:leading-5 {$style} bg-white dark:bg-slate-700 dark:border-transparent disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:cursor-not-allowed readonly:cursor-not-allowed"
+        'class' => "appearance-none block w-full px-3 sm:px-4 flex items-center h-10 border rounded-md focus:outline-none focus:ring-2 focus:ring-brand-300/50 transition duration-150 ease-in-out sm:text-sm sm:leading-5 {$style} bg-white dark:bg-slate-700 dark:border-transparent dark:disabled:border-slate-700 disabled:bg-slate-200 dark:disabled:bg-slate-800 disabled:cursor-not-allowed readonly:cursor-not-allowed"
     ]) }}
 />

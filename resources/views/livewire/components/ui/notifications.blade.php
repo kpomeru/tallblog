@@ -92,6 +92,11 @@
         }"
         @mouseover="toggleMouseOver(true)"
         @mouseover.away="toggleMouseOver(false)"
+        @notify.window="($event) => {
+            let nmsg = $event.detail;
+            type = nmsg.type;
+            message = nmsg.message;
+        }"
     >
         <div class="grow flex items-center justify-center w-full text-white space-x-2">
             <span class="text-white rounded-md w-10 h-10 flex items-center justify-center" :class="{
@@ -118,10 +123,8 @@
                 'bg-emerald-600 hover:bg-emerald-700 border-emerald-700': type === 'success',
                 'bg-indigo-600 hover:bg-indigo-700 border-indigo-700': type === 'info',
             }" @click="clear">
-                <span x-text="timer" class="text-xs font-medium group-hover:hidden"></span>
-                <x-heroicon-o-x-mark class="w-4 hidden group-hover:inline" />
+                <x-heroicon-o-x-mark class="w-4" />
             </span>
         </div>
-        {{-- <span class="h-1 absolute bg-white/25 bottom-0 left-0 w-[80%]"></span> --}}
     </div>
 </div>
