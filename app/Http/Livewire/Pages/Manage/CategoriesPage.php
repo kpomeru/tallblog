@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages\Manage;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Models\Category;
+use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
 
 class CategoriesPage extends Component
@@ -20,6 +21,11 @@ class CategoriesPage extends Component
     protected $queryString = [
         'sorts',
     ];
+
+    public function mount()
+    {
+        //
+    }
 
     public function render()
     {

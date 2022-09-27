@@ -23,10 +23,6 @@
                             </x-form.label>
 
                             <x-form.text-input disabled id="username" value="{{ $user->username }}" />
-
-                            @error('user.email')
-                                <x-form.error :error="$message"></x-form.error>
-                            @enderror
                         </div>
 
                         <div class="space-y-1">

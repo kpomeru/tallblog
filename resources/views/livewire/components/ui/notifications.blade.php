@@ -45,7 +45,7 @@
             triggerInterval() {
                 if (this.message) {
                     if (this.intv) {
-                        this.clearInterval(intv);
+                        clearInterval(this.intv);
                     }
                     this.setTimer();
                 }
@@ -117,13 +117,14 @@
             <div x-html="message"></div>
         </div>
         <div class="shrink-0">
-            <span class="text-white w-6 h-6 flex items-center justify-center rounded-full border cursor-pointer"
+            <span x-show="timer > 0" class="text-white w-6 h-6 flex items-center justify-center rounded-full border cursor-pointer"
                 :class="{
                 'bg-rose-600 hover:bg-rose-700 border-rose-700': type === 'error',
                 'bg-emerald-600 hover:bg-emerald-700 border-emerald-700': type === 'success',
                 'bg-indigo-600 hover:bg-indigo-700 border-indigo-700': type === 'info',
             }" @click="clear">
-                <x-heroicon-o-x-mark class="w-4" />
+                <span x-text="timer" class="text-xs font-medium group-hover:hidden"></span>
+                <x-heroicon-o-x-mark class="w-4 hidden group-hover:inline" />
             </span>
         </div>
     </div>

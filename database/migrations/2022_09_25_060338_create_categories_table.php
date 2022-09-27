@@ -17,7 +17,7 @@ return new class extends Migration
             $table->uuid('id')->unique();
             $table->string('title')->unique();
             $table->string('slug')->unique();
-            $table->string('avatar')->nullable();
+            $table->string('image')->nullable();
             $table->string('hexcode', 6)->nullable();
             $table->timestamps();
         });

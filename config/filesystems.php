@@ -70,6 +70,9 @@ return [
     */
 
     'links' => [
+        public_path('avatar') => storage_path('app/avatar'),
+        public_path('categories') => storage_path('app/categories'),
+        public_path('posts') => storage_path('app/posts'),
         public_path('storage') => storage_path('app/public'),
     ],
 

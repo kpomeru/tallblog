@@ -137,6 +137,27 @@
             }
         }
     }
+
+    .progress__bar {
+        .value {
+            animation: animate__progress__bar 2500ms ease-in-out infinite;
+        }
+    }
+
+    @keyframes animate__progress__bar {
+        0% {
+            @apply bg-cyan-500;
+        }
+        33% {
+            @apply bg-blue-500;
+        }
+        66% {
+            @apply bg-indigo-500;
+        }
+        100% {
+            @apply bg-cyan-500;
+        }
+    }
 }
 
 h1,
