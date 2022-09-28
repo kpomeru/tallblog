@@ -1,7 +1,7 @@
 <x-dropdown>
     <x-slot:trigger>
         <div class="rounded-full p-1 pr-3 flex items-center space-x-2 bg-brand-100 hover:bg-white dark:bg-slate-800 dark:hover:bg-slate-700 h-10">
-            <x-avatar class="w-8 rounded-full"></x-avatar>
+            <x-avatar class="w-8 rounded-full" type="image"></x-avatar>
             <span class="font-medium text-sm">
                 {{ auth()->user()->username }}
             </span>

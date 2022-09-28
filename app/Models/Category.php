@@ -9,4 +9,9 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory, UuidTrait;
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class);
+    }
 }

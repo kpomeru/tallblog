@@ -9,4 +9,9 @@ trait SharedTrait {
     {
         return Storage::delete($file);
     }
+
+    public function super_access(): bool
+    {
+        return auth()->user()->role === 'super_admin';
+    }
 }

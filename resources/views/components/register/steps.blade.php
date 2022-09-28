@@ -3,9 +3,11 @@
 @php
     $step = 1;
     if (auth()->check()) {
-        $step = auth()->user()->email_verified_at ? 3 : 2;
+        $step = auth()->user()->registration_progress;
     }
 @endphp
+
+@if ($step <= 3)
 
 <div class="flex items-center justify-end space-x-2 md:w-2/3 ml-auto">
     <?php
@@ -17,3 +19,6 @@
     ?>
     <span class="text-xs font-semibold shrink-0 grow-0">Step {{ $step }}/3</span>
 </div>
+
+@endif
+

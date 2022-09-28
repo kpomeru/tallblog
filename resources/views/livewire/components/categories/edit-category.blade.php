@@ -16,7 +16,7 @@
                         }" class="space-y-6 lg:space-y-8 relative">
                     <div class="flex items-center space-x-4">
                         @isset ($category->image)
-                        <div class="shrink-0 w-16 h-16 bg-slate-500 flex items-center justify-center rounded-md "
+                        <div class="shrink-0 w-16 h-16 bg-slate-500 dark:bg-slate-700 flex items-center justify-center rounded-md "
                             title="Current category image">
                             <img src="{{ asset($category->image) }}" alt="Current category image">
                         </div>
@@ -37,7 +37,7 @@
                             <x-slot:clear>
                                 @isset($image)
                                 <span wire:click="$set('image', null)"
-                                    class="bg-slate-200 hover:bg-slate-300 cursor-pointer w-6 h-6 rounded-full flex items-center justify-center">
+                                    class="bg-slate-200 dark:bg-slate-700 hover:bg-slate-300 dark:hover:bg-slate-600 cursor-pointer w-6 h-6 rounded-full flex items-center justify-center">
                                     <x-heroicon-o-x-mark class="w-4" />
                                 </span>
                                 @endisset
@@ -51,7 +51,12 @@
 
                     <div class="space-y-1">
                         <x-form.label for="hexcode">
-                            Hexcode
+                            <span class="flex items-center space-x-1">
+                                <span>Hexcode</span>
+                                @isset($category->hexcode)
+                                    <span class="rounded-sm w-3 h-3 inline-block border border-slate-700 dark:border-slate-500" style="background-color: #{{ $category->hexcode }}"></span>
+                                @endisset
+                            </span>
                         </x-form.label>
 
                         <x-form.text-input wire:model.lazy="category.hexcode" id="hexcode"

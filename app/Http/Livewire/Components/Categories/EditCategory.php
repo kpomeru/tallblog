@@ -42,6 +42,11 @@ class EditCategory extends Component
 
     public function edit(Category $category)
     {
+        if (!$this->super_access()) {
+            $this->anotify();
+            return;
+        }
+
         if (isset($category)) {
             $this->clearErrorBag();
             $this->category = $category;

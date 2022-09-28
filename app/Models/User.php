@@ -40,15 +40,27 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['avatar', 'registration_progress'];
+    protected $appends = ['registration_progress'];
 
-    public function getAvatarAttribute(): string
+    public function avatar($type = 'letter'): string
     {
-        return $this->avatar ?? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff&font-size=0.4";
+        return $this->avatar ?? $type === 'letter' ? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff&font-size=0.4" : "https://i.pravatar.cc/300?u={$this->email}";
     }
 
     public function getRegistrationProgressAttribute(): int
     {
-        return isset($this->email_verified_at) ? 3 : 2;
+        return isset($this->email_verified_at)
+            ? ($this->categories->count() ? 4 : 3)
+            : 2;
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany(Category::class);
+    }
+
+    public function subscriptions()
+    {
+        return $this->belongsToMany(User::class, 'user_subscription', 'subscriber_id', 'user_id');
     }
 }

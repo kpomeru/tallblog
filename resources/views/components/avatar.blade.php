@@ -1,5 +1,7 @@
+@props(['type' => 'letter', 'user' => auth()->user()])
+
 @php
-    $avatar = auth()->user()->avatar
+    $avatar = $user->avatar($type);
 @endphp
 
-<img {{ $attributes->merge(['src' => auth()->user()->avatar, 'class' => 'w-full h-auto', 'alt' => auth()->user()->username . ' avatar' ]) }}>
+<img {{ $attributes->merge(['src' => $avatar, 'class' => 'w-full h-auto', 'alt' => $user->username . ' avatar' ]) }}>

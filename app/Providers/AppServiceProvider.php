@@ -38,6 +38,10 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', ['type' => 'error', 'message' => $message]);
         });
 
+        Component::macro('anotify', function () {
+            $this->dispatchBrowserEvent('notify', ['type' => 'error', 'message' => "Access Denied, you are not authorized to perform this action."]);
+        });
+
         if (class_exists('App\Models\Category')) {
             View::share('headerCategories', $this->setMenuCategories());
         }

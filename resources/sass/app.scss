@@ -1,10 +1,15 @@
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
 
-@layer components {
+@layer base {
     * {
         @apply transition ease-in-out duration-150;
+    }
+    body {
+        // &::before {
+        //     content: '';
+        //     @apply hidden dark:inline absolute w-[40%] h-96 bg-indigo-900/50 rounded-full -left-32 -top-32 blur-3xl;
+        // }
     }
     h1 {
         @apply font-bold text-4xl;
@@ -27,7 +32,9 @@
     h6 {
         @apply font-medium;
     }
+}
 
+@layer components {
     .custom__container {
         @apply w-full max-w-screen-lg 2xl:max-w-screen-xl px-6 mx-auto;
     }
@@ -159,6 +166,8 @@
         }
     }
 }
+
+@tailwind utilities;
 
 h1,
 h2,

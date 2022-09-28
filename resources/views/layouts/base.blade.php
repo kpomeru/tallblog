@@ -32,8 +32,11 @@
             selection:bg-brand-200
         "
     >
-        <livewire:components.ui.notifications />
-        <x-loading-mask />
-        @yield('body')
+        {{-- <span class="hidden dark:inline absolute w-[40%] h-96 bg-indigo-900/50 rounded-full -left-32 -top-32 blur-3xl"></span> --}}
+        <div class="relative">
+            <livewire:components.ui.notifications />
+            <x-loading-mask />
+            @yield('body')
+        </div>
     </body>
 </html>

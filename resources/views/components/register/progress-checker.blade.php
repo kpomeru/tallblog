@@ -10,7 +10,7 @@
         </span>
     @else
         <span>
-            You can prioritise your Tallking experience by subscriptions and streamlining your niche. <a class=" hover:text-indigo-300 underline" href="{{ route('verification.notice') }}" title="Verify your email address">Click here</a> for more.
+            You can prioritise your Tallking experience by subscriptions and streamlining your niche. <a class=" hover:text-indigo-300 underline" href="{{ route('preference.selection') }}" title="Customise your experience">Click here</a> for more.
         </span>
     @endif
 </div>

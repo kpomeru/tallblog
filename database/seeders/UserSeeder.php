@@ -17,7 +17,15 @@ class UserSeeder extends Seeder
     public function run()
     {
         $password = Hash::make('Pa$$w0rd');
-        
+
+        User::factory(1)->create([
+            'deleted_at' => null,
+            'email' => env('ADMIN_EMAIL', 'super_admin@tallblog.test'),
+            'email_verified_at' => now(),
+            'password' => $password,
+            'role' => 'super_admin',
+        ]);
+
         User::factory(100)->create([
             'password' => $password
         ]);

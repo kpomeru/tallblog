@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('username')->unique();
             $table->string('password');
             $table->string('avatar')->nullable();
+            $table->text('bio')->nullable();
             $table->string('role')->default('subscriber');
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();

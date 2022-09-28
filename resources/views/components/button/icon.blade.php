@@ -16,7 +16,7 @@
                 break;
 
             case 'transparent':
-                $style = "border border-slate-100 dark:border-slate-800/50 hover:border-brand-400 dark:hover:border-brand-300 hover:text-brand-400 dark:hover:text-brand-300";
+                $style = "border border-slate-200 dark:border-slate-600 hover:border-brand-400 dark:hover:border-brand-300 hover:text-brand-400 dark:hover:text-brand-300";
                 break;
 
             default:

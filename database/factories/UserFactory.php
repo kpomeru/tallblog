@@ -18,6 +18,7 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
+            'bio' => fake()->paragraph(),
             'deleted_at' => Arr::random([true, false, false, false]) ? now() : null,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => Arr::random([true, false]) ? now() : null,

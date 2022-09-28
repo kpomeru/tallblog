@@ -5,6 +5,7 @@ namespace App\Http\Livewire\Pages\Manage;
 use App\Http\Livewire\DataTable\WithPerPagePagination;
 use App\Http\Livewire\DataTable\WithSorting;
 use App\Models\User;
+use App\Traits\SharedTrait;
 use Livewire\Component;
 
 class UsersPage extends Component

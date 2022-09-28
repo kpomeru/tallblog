@@ -3,10 +3,13 @@
 namespace App\Http\Livewire\Components\Users;
 
 use App\Models\User;
+use App\Traits\SharedTrait;
 use Livewire\Component;
 
 class EditUser extends Component
 {
+    use SharedTrait;
+
     protected $listeners = [
         '$refresh',
         'edit'
@@ -40,6 +43,11 @@ class EditUser extends Component
 
     public function edit($id)
     {
+        if (!$this->super_access()) {
+            $this->anotify();
+            return;
+        }
+
         $user = User::whereId($id)->withTrashed()->first();
         if (!$user) {
             $this->enotify("User not found.");

@@ -80,7 +80,7 @@
                             </x-table.cell>
 
                             <x-table.cell class="flex justify-end items-center space-x-2">
-                                <x-button.icon wire:click="$emitTo('components.users.edit-user', 'edit', '{{ $user_item->id }}')" color="transparent" class="shrink-0" title="Edit member">
+                                <x-button.icon wire:click="$emitTo('components.users.edit-user', 'edit', '{{ $user_item->id }}')" class="shrink-0" color="transparent" :disabled="auth()->user()->role !== 'super_admin'" title="Edit member">
                                     <x-heroicon-m-pencil class="w-4 text-blue-300" />
                                 </x-button.icon>
                             </x-table.cell>
