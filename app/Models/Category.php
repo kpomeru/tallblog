@@ -10,6 +10,11 @@ class Category extends Model
 {
     use HasFactory, UuidTrait;
 
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
+    }
+
     public function users()
     {
         return $this->belongsToMany(User::class);

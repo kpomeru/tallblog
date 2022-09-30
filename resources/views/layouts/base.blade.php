@@ -1,6 +1,5 @@
 <!DOCTYPE html>
-<html x-data="themeData" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html x-data="themeData" class="scroll-smooth" lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -27,13 +26,12 @@
     </head>
 
     <body
-        class="
-            min-h-screen font-sans antialiased bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100
+        class="font-sans antialiased bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-100
             selection:bg-brand-200
         "
     >
         {{-- <span class="hidden dark:inline absolute w-[40%] h-96 bg-indigo-900/50 rounded-full -left-32 -top-32 blur-3xl"></span> --}}
-        <div class="relative">
+        <div class="relative main__area">
             <livewire:components.ui.notifications />
             <x-loading-mask />
             @yield('body')

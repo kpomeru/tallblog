@@ -17,9 +17,9 @@ class DatabaseSeeder extends Seeder
     {
         // DB::table('shift_notifications')->truncate();
 
-        $this->call([
-            UserSeeder::class,
-            CategorySeeder::class,
-        ]);
+        // $this->call([
+        //     UserSeeder::class,
+        //     CategorySeeder::class,
+        // ]);
     }
 }

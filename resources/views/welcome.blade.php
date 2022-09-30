@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    <div></div>
+    <div>
+        {{-- {{ auth()->user()->registration_progress }} --}}
+    </div>
 @endsection

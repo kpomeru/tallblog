@@ -16,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome')->name('home');
 require __DIR__ . '/auth.php';
+require __DIR__ . '/posts.php';
 
 Route::group(['middleware' => ['auth']], function () {
     require __DIR__ . '/manage.php';

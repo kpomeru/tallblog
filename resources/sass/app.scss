@@ -1,6 +1,4 @@
 @tailwind base;
-@tailwind components;
-
 @layer base {
     * {
         @apply transition ease-in-out duration-150;
@@ -34,6 +32,7 @@
     }
 }
 
+@tailwind components;
 @layer components {
     .custom__container {
         @apply w-full max-w-screen-lg 2xl:max-w-screen-xl px-6 mx-auto;
@@ -131,14 +130,19 @@
     .manage__menu__item {
         @apply flex cursor-pointer px-4 md:px-6 py-4 capitalize relative text-sm font-medium space-x-2 items-center md:justify-center text-slate-500 hover:text-brand-400;
 
+        &.active {
+            @apply text-brand-400 hover:text-brand-400 dark:text-white dark:hover:text-white;
+        }
+    }
+
+    .manage__menu__item,
+    .category__menu__item {
         &::after {
             content: "";
             @apply h-1 absolute -bottom-[2.25px] inset-x-0 rounded-full;
         }
 
         &.active {
-            @apply text-brand-400 hover:text-brand-400 dark:text-white dark:hover:text-white;
-
             &::after {
                 @apply bg-brand-300;
             }
@@ -183,4 +187,11 @@ select:invalid {
 
 [x-cloak] {
     display: none;
+}
+
+.main__area {
+    min-height: calc(100vh - 64px);
+    @media (min-width: 768px) {
+        min-height: calc(100vh - 80px);
+    }
 }

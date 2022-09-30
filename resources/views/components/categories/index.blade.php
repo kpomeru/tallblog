@@ -1,7 +1,6 @@
 <div
     x-data="{
         open: false,
-        clicked: false,
     }"
     class="hidden md:inline-block"
 >
@@ -21,12 +20,13 @@
             x-transition:leave="transition ease-in duration-150"
             x-transition:leave-start="opacity-100 translate-y-0 scale-100"
             x-transition:leave-end="opacity-0 -translate-y-12 scale-90"
-            class="fixed top-16 inset-x-0 z-40"
+            class="fixed top-16 inset-x-0 z-40 origin-top"
         >
-            <div class="custom__container hidden md:grid bg-white dark:bg-slate-800 rounded-md p-6 shadow-lg shadow-indigo-100 dark:shadow-slate-900 grid-cols-2 lg:grid-cols-3 gap-4 origin-top-right" @click.away="open = false">
-                @foreach ($headerCategories as $cat)
-                <x-categories.category :category="$cat" />
+            <div class="custom__container hidden md:grid bg-white dark:bg-slate-800 rounded-md p-6 shadow-lg shadow-indigo-100 dark:shadow-slate-900 grid-cols-2 lg:grid-cols-3 gap-4" @click.away="open = false">
+                @foreach ($headerCategories->map(fn ($item) => ['title' => $item->title, 'slug' => $item->slug]) as $cat)
+                <x-categories.category :category="$cat" :current-category="request()->route('category')" />
                 @endforeach
+                <x-categories.category :category="['title' => 'all', 'slug' => 'all']" />
             </div>
         </div>
     </template>

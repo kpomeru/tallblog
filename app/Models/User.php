@@ -40,11 +40,16 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-    protected $appends = ['registration_progress'];
+    protected $appends = ['is_admin', 'can_post', 'registration_progress'];
 
-    public function avatar($type = 'letter'): string
+    public function getIsAdminAttribute(): bool
     {
-        return $this->avatar ?? $type === 'letter' ? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff&font-size=0.4" : "https://i.pravatar.cc/300?u={$this->email}";
+        return in_array($this->role, ['super_admin', 'admin']);
+    }
+
+    public function getCanPostAttribute(): bool
+    {
+        return in_array($this->role, ['super_admin', 'admin', 'contributor']);
     }
 
     public function getRegistrationProgressAttribute(): int
@@ -54,9 +59,19 @@ class User extends Authenticatable implements MustVerifyEmail
             : 2;
     }
 
+    public function avatar($type = 'letter'): string
+    {
+        return $this->avatar ?? $type === 'letter' ? "https://ui-avatars.com/api/?name={$this->username}&size=128&format=svg&background=005A5D&color=ffffff&font-size=0.4" : "https://i.pravatar.cc/300?u={$this->email}";
+    }
+
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+
+    public function posts()
+    {
+        return $this->hasMany(Post::class);
     }
 
     public function subscriptions()
