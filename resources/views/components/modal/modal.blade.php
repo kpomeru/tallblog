@@ -75,6 +75,7 @@ switch ($maxWidth ?? 'xl') {
     x-on:keydown.tab.prevent="$event.shiftKey || nextFocusable().focus()"
     x-on:keydown.shift.tab.prevent="prevFocusable().focus()"
     x-show="show"
+    x-trap.noscroll="show"
     id="{{ $id }}"
     class="fixed top-0 inset-x-0 px-4 pt-6 z-[91] sm:px-0 sm:flex {{ $modalPlacement }} sm:justify-center"
     style="display: none;"

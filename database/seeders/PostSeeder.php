@@ -2,7 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Comment;
+use App\Models\Like;
 use App\Models\Post;
+use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Arr;
@@ -18,8 +21,21 @@ class PostSeeder extends Seeder
     public function run()
     {
         $this->truncate_table();
-        Post::factory()->count(300)
+
+        $users = User::inRandomOrder()->pluck('id')->toArray();
+
+        Post::factory()->count(50)
             ->sequence(fn ($sequence) => ['image' => $this->set_image($sequence->index)])
+            ->has(
+                Comment::factory()
+                    ->sequence(fn () => ['user_id' => Arr::random($users)])
+                    ->has(
+                        Like::factory()->sequence(fn () => ['user_id' => Arr::random($users)])
+                            ->count(rand(5, 10)),
+                        'likes'
+                    )
+                    ->count(rand(2, 4))
+            )
             ->create();
     }
 
@@ -37,7 +53,7 @@ class PostSeeder extends Seeder
             'furniture',
         ];
 
-        $wArray = [1280, 1024, 960, 720];
+        $wArray = [1920, 1440, 1280, 960];
         $width = Arr::random($wArray);
         $mod = $index % 3;
         switch ($mod) {
@@ -59,6 +75,8 @@ class PostSeeder extends Seeder
 
     public function truncate_table()
     {
+        DB::table('comments')->truncate();
+        DB::table('likes')->truncate();
         DB::table('posts')->truncate();
     }
 }

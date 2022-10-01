@@ -45,21 +45,28 @@ class PostsPage extends Component
 
     public function getRowsQueryProperty()
     {
+        $search = $this->search;
+
         $query = Post::query()
             ->when($this->category, fn ($q, $v) => $q->whereCategoryId($v->id))
             ->whereNotNull('published_at')
             // ->unless(auth()->check() && auth()->user()->is_admin, fn ($q) => $q->whereNotNull('published_at'))
-            ->when($this->search, fn ($q, $v) => $q->where('id', 'like', '%' . $v . '%')
-                ->orWhere('title', 'like', '%' . $v . '%')
-                ->orWhere('excerpt', 'like', '%' . $v . '%')
-                ->orWhere('created_at', 'like', '%' . $v . '%')
-                ->orWhere(function ($q) use ($v) {
-                    $q
-                    // ->when($this->category, fn ($q, $v) => $q->whereCategoryId($v->id))
-                    ->whereNotNull('published_at')->whereHas('user', function ($q) use ($v) {
-                        $q->where('username', 'like', '%' . $v . '%');
+            ->when($search, function ($q) use ($search) {
+                $q->whereNotNull('published_at')
+                    ->where(function ($q) use ($search) {
+                        $q->where('id', 'like', '%' . $search . '%')
+                            ->orWhere('title', 'like', '%' . $search . '%')
+                            ->orWhere('excerpt', 'like', '%' . $search . '%')
+                            ->orWhere('created_at', 'like', '%' . $search . '%')
+                            ->orWhere(function ($q) use ($search) {
+                                $q
+                                    // ->when($this->category, fn ($q, $v) => $q->whereCategoryId($v->id))
+                                    ->whereNotNull('published_at')->whereHas('user', function ($q) use ($search) {
+                                        $q->where('username', 'like', '%' . $search . '%');
+                                    });
+                            });
                     });
-                }))
+            })
             ->with(['category', 'user']);
 
         return $this->applySorting($query, 'created_at', 'desc');

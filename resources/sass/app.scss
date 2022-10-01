@@ -70,7 +70,7 @@
     }
 
     .menu__list {
-        @apply flex items-center absolute md:relative;
+        @apply flex items-center md:relative;
 
         .menu__item {
             @apply relative flex items-center justify-center rounded uppercase text-sm font-semibold px-4 md:h-20 text-slate-600 dark:text-slate-400 hover:text-brand dark:hover:text-brand-300;

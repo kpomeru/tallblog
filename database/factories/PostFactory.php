@@ -26,12 +26,13 @@ class PostFactory extends Factory
 
         return [
             'category_id' => Category::inRandomOrder()->first()->id,
-            'content' => fake()->paragraphs(fake()->randomDigitNotNull, true),
+            'content' => fake()->paragraphs(rand(3, 8), true),
             'created_at' => $created,
             'excerpt' => fake()->text(),
             'featured_at' => Arr::random([true, false, false, false]) ? fake()->dateTimeBetween($created) : null,
             'published_at' => Arr::random([true, false, false, false]) ? fake()->dateTimeBetween($created) : null,
             'slug' =>  str()->snake($title, '-'),
+            'tags' => fake()->words(rand(2, 6)),
             'title' =>  $title,
             'updated_at' => fake()->dateTimeBetween($created),
             'user_id' => User::whereNotIn('role', ['subscriber'])->inRandomOrder()->first()->id,

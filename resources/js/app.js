@@ -1,6 +1,11 @@
 import "./bootstrap";
 import Alpine from "alpinejs";
-window.Alpine = Alpine;
+import focus from "@alpinejs/focus";
+import intersect from "@alpinejs/intersect";
+
+Alpine.plugin(focus);
+Alpine.plugin(intersect);
+
 
 const currentTheme = localStorage.getItem("theme");
 
@@ -45,4 +50,5 @@ Alpine.data("themeData", () => ({
     },
 }));
 
+window.Alpine = Alpine;
 Alpine.start();

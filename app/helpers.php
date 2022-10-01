@@ -1,11 +1,11 @@
 <?php
 
 if (!function_exists('format_date')) {
-    function format_date($value, $with_time = true)
+    function format_date($value, $with_time = true, $date_format = "F dS Y", $time_format = "H:ia")
     {
-        $format = "F dS Y";
+        $format = $date_format;
         if ($with_time) {
-            $format .= " H:iA";
+            $format .= " {$time_format}";
         }
         return date($format, strtotime($value));
     }

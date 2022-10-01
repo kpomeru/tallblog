@@ -11,7 +11,10 @@
     })"
     class="py-6"
 >
-    <div class="custom__container space-y-6 md:space-y-8 lg:space-y-10">
+    <template x-if="showSearch">
+        <div class="fixed bg-slate-800/40 dark:bg-slate-900/75 inset-0 z-[41]"></div>
+    </template>
+    <div class="custom__container space-y-6 md:space-y-8 lg:space-y-10 relative">
         <div class="flex items-center justify-between space-x-2">
             <div class="flex items-center justify-between relative w-full space-x-2">
                 <x-posts.search />
@@ -34,7 +37,7 @@
             <span x-text="`'${search}'`" class="text-brand-300 font-medium"></span>
         </div>
 
-        <div class="@if ($list->count()) md:columns-2 @endif gap-6 md:gap-8 lg:gap-10 space-y-6 md:space-y-8 lg:space-y-10">
+        <div class="@if ($list->count()) md:columns-2 @endif md:gap-x-8 lg:gap-x-10 space-y-6 md:space-y-8 lg:space-y-10">
             @forelse ($list as $key => $post)
                 <x-posts.page-card :key="$key . '-' . $post->id" :post="$post" />
             @empty
@@ -45,5 +48,4 @@
         {{ $list->links('components.paginate.index') }}
         {{-- {{ $list->links() }} --}}
     </div>
-
 </div>

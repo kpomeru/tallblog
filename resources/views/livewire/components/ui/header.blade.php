@@ -1,6 +1,6 @@
 <div class="h-16 md:h-20 flex items-center sticky top-0 inset-x-0 backdrop-blur bg-slate-100 dark:bg-slate-900/80 z-40 border-b dark:border-slate-100/10">
     <div class="flex items-center justify-between custom__container">
-        <div>
+        <div class="shrink-0">
             <a href="{{ route('home') }}" title="Homepage">
                 <x-logo></x-logo>
             </a>

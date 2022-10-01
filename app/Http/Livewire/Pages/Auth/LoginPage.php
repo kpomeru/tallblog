@@ -11,6 +11,9 @@ class LoginPage extends Component
     public $email = '';
 
     /** @var string */
+    public $intended = '';
+
+    /** @var string */
     public $password = '';
 
     /** @var bool */
@@ -20,6 +23,14 @@ class LoginPage extends Component
         'email' => ['required', 'email', 'exists:users'],
         'password' => ['required'],
     ];
+
+    public function mount()
+    {
+        if (session()->has('intended_url')) {
+            $this->intended = session()->get('intended_url');
+            session()->forget('intended_url');
+        }
+    }
 
     public function authenticate()
     {
@@ -31,7 +42,7 @@ class LoginPage extends Component
             return;
         }
 
-        return redirect()->intended(route('home'));
+        return redirect()->intended($this->intended ?? route('home'));
     }
 
     public function render()
