@@ -1,4 +1,7 @@
 <div
+    x-data="{
+        confirmDelete: @entangle('confirm_delete')
+    }"
     class="py-6 space-y-3"
 >
     <div class="flex justify-between">
@@ -14,9 +17,16 @@
             </div>
         </div>
 
-        @auth
-            <span class="text-xs cursor-pointer">Delete</span>
-        @endauth
+        @if ($can_delete)
+            <div>
+                <span x-show.transition="!confirmDelete" class="text-xs cursor-pointer" @click="confirmDelete = !confirmDelete">Delete</span>
+                <span x-show.transition="confirmDelete" class="text-xs">
+                    <span>Are you sure? </span>
+                    <span wire:click="destroy" class="cursor-pointer underline font-medium">Yes</span>
+                    <span class="cursor-pointer underline" @click="confirmDelete = false">No</span>
+                </span>
+            </div>
+        @endif
     </div>
 
     <div class="text-xs dark:text-slate-300">

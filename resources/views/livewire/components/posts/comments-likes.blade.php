@@ -38,8 +38,14 @@
 
     <div
         x-show="open"
-        x-trap.noscroll="open"
-        class="fixed bottom-0 top-0 right-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 max-h-screen min-h-screen overflow-y-scroll bg-white dark:bg-slate-800 p-4 md:px-6 border-l dark:border-slate-700 divide-y dark:divide-slate-600 shadow-2xl dark:shadow-none shadow-indigo-200"
+        x-trap.inert.noscroll="open"
+        x-transition:enter="transition ease-out duration-150"
+        x-transition:enter-start="opacity-0 translate-x-16"
+        x-transition:enter-end="opacity-100 translate-x-0"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100 translate-x-0"
+        x-transition:leave-end="opacity-0 translate-x-16"
+        class="fixed bottom-0 top-0 right-0 w-full sm:w-1/2 md:w-1/3 lg:w-1/4 max-h-screen min-h-screen overflow-y-scroll bg-white dark:bg-slate-800 p-4 md:px-6 border-l dark:border-slate-700 divide-y dark:divide-slate-600 shadow-2xl dark:shadow-none shadow-indigo-200 origin-right"
         @click.outside="open = false"
         @keyup.esc="open = false"
     >
@@ -49,6 +55,9 @@
                 <x-heroicon-o-x-mark />
             </x-button.icon>
         </div>
+
+        <livewire:components.posts.add-comment :post-id="$post->id" />
+
         <div class="divide-y dark:divide-slate-600">
             @foreach ($post->comments as $commentKey => $comment)
                 <livewire:components.posts.comment :key="$comment->id.'-'.$commentKey" :id="$comment->id">

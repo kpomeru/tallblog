@@ -83,7 +83,7 @@
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-8"
         class="
-            z-[90] absolute top-0 inset-x-0 h-16 flex items-center justify-between text-sm font-medium space-x-4 px-4 md:px-6 group
+            z-[90] fixed top-0 inset-x-0 h-16 flex items-center justify-between text-sm font-medium space-x-4 px-4 md:px-6 group
         "
         :class="{
             'bg-rose-500': type === 'error',

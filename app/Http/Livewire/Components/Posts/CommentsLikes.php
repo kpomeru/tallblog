@@ -11,13 +11,13 @@ class CommentsLikes extends Component
 {
     use SharedTrait;
 
-    protected $listeners = ['$refresh'];
+    protected $listeners = ['set_info'];
 
     /** @var object */
     public Like $like;
 
     /** @var bool */
-    public $open = false;
+    public $open = !false;
 
     /** @var object */
     public Post $post;
