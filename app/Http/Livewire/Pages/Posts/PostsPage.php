@@ -22,10 +22,16 @@ class PostsPage extends Component
     /** @var bool */
     public $showSearch = false;
 
+    /** @var bool */
+    public $user_posts = false;
+
     protected $listeners = ['$refresh', 'setCategory'];
 
     public function mount(Category $category)
     {
+        if (request()->filled('authorPosts')) {
+            $this->user_posts = (bool) request('authorPosts');
+        }
         $this->perPage = 10;
 
         if (isset($category)) {
@@ -43,14 +49,13 @@ class PostsPage extends Component
         return $this->applyPagination($this->rowsQuery);
     }
 
-    public function getRowsQueryProperty()
+    public function getAllPostsQueryProperty()
     {
         $search = $this->search;
 
-        $query = Post::query()
+        return Post::query()
             ->when($this->category, fn ($q, $v) => $q->whereCategoryId($v->id))
             ->whereNotNull('published_at')
-            // ->unless(auth()->check() && auth()->user()->is_admin, fn ($q) => $q->whereNotNull('published_at'))
             ->when($search, function ($q) use ($search) {
                 $q->whereNotNull('published_at')
                     ->where(function ($q) use ($search) {
@@ -66,7 +71,17 @@ class PostsPage extends Component
                                     });
                             });
                     });
-            })
+            });
+    }
+
+    public function getUserPostsQueryProperty()
+    {
+        return Post::whereUserId(auth()->id());
+    }
+
+    public function getRowsQueryProperty()
+    {
+        $query = ($this->user_posts ? $this->userPostsQuery : $this->allPostsQuery)
             ->with(['category', 'user']);
 
         return $this->applySorting($query, 'created_at', 'desc');
@@ -91,14 +106,17 @@ class PostsPage extends Component
         $this->resetSearch();
         $this->resetPage();
 
-        if (isset($slug) && $slug[0] !== 'all') {
+        if (isset($slug) && ($slug[0] !== 'all' && $slug[0] !== 'my-posts')) {
             if ($c = Category::whereSlug($slug)->first()) {
+                $this->user_posts = false;
                 $this->category = $c;
             }
             return;
-        } else {
-            $this->category = null;
+        } elseif (isset($slug) && $slug[0] === 'my-posts') {
+            $this->user_posts = true;
         }
+
+        $this->category = null;
     }
 
     public function updatedSearch($value)

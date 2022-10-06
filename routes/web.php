@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Livewire\Pages\ChoosePreferencesPage;
+use App\Notifications\NewCommentNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -24,4 +25,12 @@ Route::group(['middleware' => ['auth']], function () {
     Route::get('/preference-selection', ChoosePreferencesPage::class)
         ->middleware('preferred.categories')
         ->name('preference.selection');
+});
+
+
+Route::get('/notification', function () {
+    $comment = \App\Models\Comment::inRandomOrder()->first();
+
+    return (new NewCommentNotification($comment))
+        ->toMail($comment->post->user);
 });

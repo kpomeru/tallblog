@@ -56,6 +56,10 @@
             },
         }"
         x-init="() => {
+            document.getElementById('notifications__container').addEventListener('own-notify', (e) => {
+                console.log(e.detail);
+            })
+
             if (msg) {
                 message = msg;
                 triggerInterval();
@@ -90,9 +94,11 @@
             'bg-emerald-500': type === 'success',
             'bg-indigo-500': type === 'info',
         }"
+        id="notifications__container"
         @mouseover="toggleMouseOver(true)"
         @mouseover.away="toggleMouseOver(false)"
         @notify.window="($event) => {
+            console.log($event)
             let nmsg = $event.detail;
             type = nmsg.type;
             message = nmsg.message;

@@ -17,18 +17,20 @@
     <div class="custom__container space-y-6 md:space-y-8 lg:space-y-10 relative">
         <div class="flex items-center justify-between space-x-2">
             <div class="flex items-center justify-between relative w-full space-x-2">
-                <x-posts.search />
                 <livewire:components.posts.categories-list :category-slug="isset($category) ? $category->slug : 'all'" />
-                <x-button class="!border-none shrink-0" color="transparent" title="Search posts"  @click="showSearch = true">
-                    <x-heroicon-s-magnifying-glass />
-                    <span>Search</span>
-                </x-button>
+                @if (!$user_posts)
+                    <x-button class="!border-none shrink-0" color="transparent" title="Search posts"  @click="showSearch = true">
+                        <x-heroicon-s-magnifying-glass />
+                        <span>Search</span>
+                    </x-button>
+                    <x-posts.search />
+                @endif
             </div>
 
             @if (auth()->check() && auth()->user()->can_post)
-                <x-button.icon class="shrink-0" color="transparent" title="Add a new post">
+                <x-button.icon-link class="shrink-0" href="{{ route('create.post') }}" title="Create Post">
                     <x-heroicon-s-plus />
-                </x-button.icon>
+                </x-button.icon-link>
             @endif
         </div>
 

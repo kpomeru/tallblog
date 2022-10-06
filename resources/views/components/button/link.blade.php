@@ -10,6 +10,6 @@
     $ring = $color !== 'transparent' ? "has__ring" : "no__ring";
 ?>
 
-<button {{ $attributes->merge(['type' => 'button', 'class' => "btn btn__text {$style} {$ring}"]) }}>
+<a {{ $attributes->merge(['type' => 'button', 'class' => "btn btn__text {$style} {$ring}"]) }}>
     {{ $slot }}
-</button>
+</a>

@@ -18,13 +18,18 @@ class UserSeeder extends Seeder
     {
         $password = Hash::make('Pa$$w0rd');
 
-        User::factory(1)->create([
-            'deleted_at' => null,
-            'email' => env('ADMIN_EMAIL', 'super_admin@tallblog.test'),
-            'email_verified_at' => now(),
-            'password' => $password,
-            'role' => 'super_admin',
-        ]);
+        foreach (['super_admin', 'admin', 'contributor', 'subscriber'] as $role) {
+            User::factory()->create(
+                [
+                    'deleted_at' => null,
+                    'email' => "{$role}@tallblog.test",
+                    'email_verified_at' => now(),
+                    'password' => $password,
+                    'role' => $role,
+                ]
+            );
+        }
+
 
         User::factory(100)->create([
             'password' => $password

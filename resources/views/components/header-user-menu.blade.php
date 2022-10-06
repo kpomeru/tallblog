@@ -9,12 +9,17 @@
     </x-slot:trigger>
 
     <x-slot:content>
-        <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 md:hidden" href="{{ route('manage.dashboard') }}" title="View Posts">Posts</a>
+        <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700 md:hidden" href="{{ route('posts') }}" title="View Posts">Posts</a>
 
         @if (in_array(auth()->user()->role, ['super_admin', 'admin']))
         <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('manage.dashboard') }}" title="Admin dashboard">Manage</a>
         @endif
 
+        @if (auth()->user()->can_post)
+            <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('posts', ['authorPosts' => true]) }}" title="View Posts">My Posts</a>
+        @endif
+
+        <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('posts') }}" title="View Posts">Profile</a>
 
         <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Come back soon">Log out</a>
 

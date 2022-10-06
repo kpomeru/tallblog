@@ -1,0 +1,89 @@
+.markdown-content {
+    /* max-width: 65ch; */
+    /* change according to need... */
+}
+.markdown-content pre code {
+    padding: 1rem;
+    font-size: 0.9rem;
+}
+.markdown-content div,
+.markdown-content p,
+.markdown-content pre,
+.markdown-content blockquote,
+.markdown-content ol,
+.markdown-content ul {
+    margin-bottom: 1.5rem;
+}
+.markdown-content h1,
+.markdown-content h2,
+.markdown-content h3 {
+    color: #1a202c;
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+.markdown-content strong {
+    font-weight: bold;
+}
+.markdown-content blockquote {
+    display: block;
+    border-left: 4px solid #667eea;
+    padding-left: 0.8em;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 400;
+}
+.markdown-content a {
+    color: #667eea;
+    text-decoration: underline;
+    text-decoration-color: hsla(229,76%,66%, 0.3);
+    -moz-text-decoration-color: hsla(229,76%,66%, 0.3);
+}
+.markdown-content a:hover {
+    text-decoration-color: hsla(229,76%,66%, 1);
+    -moz-text-decoration-color: hsla(229,76%,66%,1);
+}
+
+.markdown-content ol,
+.markdown-content ul {
+    display: block;
+}
+
+.markdown-content li {
+    position: relative;
+    padding-left: 1.5em;
+    margin-bottom: 1rem;
+}
+.markdown-content ul li:before {
+    position: absolute;
+    top: 10px;
+    left: 0;
+    content: "";
+    width: 0.4em;
+    height: 0.4em;
+    background-color: #667eea;
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.markdown-content ol {
+    counter-reset: custom-counter;
+}
+.markdown-content ol li:before {
+    counter-increment: custom-counter;
+    position: absolute;
+    top: 2px;
+    left: 0;
+    content: counter(custom-counter) ".";
+    display: inline-block;
+    font-size: 0.85em;
+    font-weight: 500;
+    color: #667eea;
+    text-align: right;
+}
+
+.markdown-content .hide__caption figcaption, .hide__caption figcaption  {
+    display: none;
+}

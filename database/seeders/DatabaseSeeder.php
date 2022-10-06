@@ -15,11 +15,13 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // DB::table('shift_notifications')->truncate();
+        // DB::table('categories')->truncate();
+        // DB::table('users')->truncate();
 
-        // $this->call([
-        //     UserSeeder::class,
-        //     CategorySeeder::class,
-        // ]);
+        $this->call([
+            UserSeeder::class,
+            CategorySeeder::class,
+            PostSeeder::class,
+        ]);
     }
 }

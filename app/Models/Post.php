@@ -6,6 +6,7 @@ use App\Traits\UuidTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Post extends Model
 {
@@ -14,7 +15,7 @@ class Post extends Model
     use SoftDeletes;
 
     protected $guarded = [];
-    protected $appends = ['likes_count'];
+    protected $appends = ['image', 'likes_count'];
 
     protected $casts = ['tags' => 'array'];
 
@@ -36,6 +37,19 @@ class Post extends Model
     public function likes()
     {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function getImageAttribute()
+    {
+        if (!isset($this->attributes['image'])) {
+            return null;
+        }
+
+        if (strpos($this->attributes['image'], 'http') === true) {
+            return $this->attributes['image'];
+        }
+
+        return asset($this->attributes['image']);
     }
 
     public function getLikesCountAttribute()

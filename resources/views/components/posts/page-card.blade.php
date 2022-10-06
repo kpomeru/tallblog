@@ -5,7 +5,7 @@
 >
     <a href="{{ route('post', ['post' => $post->slug]) }}" class="flex flex-col space-y-2" title="View post">
         @isset($post->image)
-            <img src="{{ $post->image }}" class="rounded-md" alt="">
+            <img src="{{ $post->image }}" class="rounded-md bg-slate-500" alt="">
         @endisset
         <h4>{{ $post->title }}</h4>
     </a>
@@ -34,10 +34,14 @@
             {{ $post->category->title }}
         </x-badge>
 
-        <a href="{{ route('post', ['post' => $post->slug]) }}" class="opacity-0 group-hover:opacity-100" title="View post">
-            <x-button.icon class="!border-none" color="transparent">
+        <div class="flex items-center justify-end space-x-2">
+            <x-button.icon-link href="{{ route('edit.post', ['post' => $post]) }}" class="opacity-0 group-hover:opacity-100 !border-none" color="transparent" title="Edit post">
+                <x-heroicon-s-pencil class="w-4" />
+            </x-button.icon-link>
+
+            <x-button.icon-link href="{{ route('post', ['post' => $post->slug]) }}" class="opacity-0 group-hover:opacity-100 !border-none" color="transparent" title="View post">
                 <x-heroicon-s-arrow-right />
-            </x-button.icon>
-        </a>
+            </x-button.icon-link>
+        </div>
     </div>
 </div>

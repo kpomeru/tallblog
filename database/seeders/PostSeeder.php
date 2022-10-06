@@ -24,17 +24,22 @@ class PostSeeder extends Seeder
 
         $users = User::inRandomOrder()->pluck('id')->toArray();
 
-        Post::factory()->count(50)
+        Post::factory()->count(100)
             ->sequence(fn ($sequence) => ['image' => $this->set_image($sequence->index)])
             ->has(
                 Comment::factory()
                     ->sequence(fn () => ['user_id' => Arr::random($users)])
                     ->has(
                         Like::factory()->sequence(fn () => ['user_id' => Arr::random($users)])
-                            ->count(rand(5, 10)),
+                            ->count(rand(3, 6)),
                         'likes'
                     )
-                    ->count(rand(2, 4))
+                    ->count(rand(4, 8))
+            )
+            ->has(
+                Like::factory()->sequence(fn () => ['user_id' => Arr::random($users)])
+                    ->count(rand(10, 20)),
+                'likes'
             )
             ->create();
     }

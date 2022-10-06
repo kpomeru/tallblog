@@ -3,6 +3,7 @@
 namespace App\Http\Livewire\Components\Posts;
 
 use App\Models\Comment;
+use App\Notifications\NewCommentNotification;
 use App\Traits\SharedTrait;
 use Livewire\Component;
 
@@ -34,11 +35,15 @@ class AddComment extends Component
 
         $this->validate(['comment' => 'required|string|max:256']);
 
-        Comment::create([
+        $new_comment = Comment::create([
             'comment' => $this->comment,
             'post_id' => $this->post_id,
             'user_id' => auth()->id(),
         ]);
+
+        if ($new_comment->post->user_id !== auth()->id()) {
+            $new_comment->post->user->notify(new NewCommentNotification($new_comment));
+        }
 
         $this->snotify('Comment added.');
         $this->emitUp('set_info', $this->post_id);

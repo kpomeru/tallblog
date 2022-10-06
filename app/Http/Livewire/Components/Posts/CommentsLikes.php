@@ -17,7 +17,7 @@ class CommentsLikes extends Component
     public Like $like;
 
     /** @var bool */
-    public $open = !false;
+    public $open = false;
 
     /** @var object */
     public Post $post;
