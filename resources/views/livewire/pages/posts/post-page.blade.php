@@ -10,7 +10,7 @@ $date_format .= " Y";
 }
 @endphp
 
-<div class="space-y-6 md:space-y-8 lg:space-y-10 py-6">
+<div class="space-y-6 md:space-y-8 lg:space-y-10 pt-6">
     <div class="custom__container">
         <div class="max-w-screen-md mx-auto space-y-6">
             <div class="flex items-center justify-between">
@@ -40,10 +40,9 @@ $date_format .= " Y";
                         title="Edit/Update Post">
                         <x-heroicon-m-pencil class="w-4" />
                     </x-button.icon-link>
-
-                    <x-button.icon class="shrink-0" title="Delete Post">
-                        <x-heroicon-m-trash class="w-4" />
-                    </x-button.icon>
+                    @if (auth()->id() === $post->user_id)
+                    <livewire:components.posts.delete-post :post="$post" />
+                    @endif
                     @endif
                 </div>
             </div>
@@ -101,4 +100,12 @@ $date_format .= " Y";
         </div>
     </div>
 
+    <div class="space-y-6">
+        <h5 class="text-center text-slate-500">Related posts</h5>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 divide-x divide-y">
+            @foreach ($related_posts as $related_post)
+                <x-posts.related-card :post="$related_post" />
+            @endforeach
+        </div>
+    </div>
 </div>

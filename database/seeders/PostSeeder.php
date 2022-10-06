@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
 
         $users = User::inRandomOrder()->pluck('id')->toArray();
 
-        Post::factory()->count(100)
+        Post::factory()->count(200)
             ->sequence(fn ($sequence) => ['image' => $this->set_image($sequence->index)])
             ->has(
                 Comment::factory()
