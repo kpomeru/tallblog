@@ -1,7 +1,7 @@
 @props(['post'])
 
 <a
-    class="space-y-4 p-4 overflow-hidden hover:shadow-2xl bg-white/50 dark:bg-slate-800/50 hover:bg-brand hover:text-white dark:hover:bg-brand dark:hover:text-white group transition ease-out duration-500 origin-bottom border-t hover:border-brand flex flex-col justify-between"
+    class="space-y-4 p-4 overflow-hidden hover:shadow-2xl bg-white/50 dark:bg-slate-800/50 hover:bg-brand hover:text-white dark:hover:bg-brand dark:hover:text-white group transition ease-out duration-500 origin-bottom border-t hover:border-brand flex flex-col justify-between dark:border-slate-700"
     href="{{ route('post', ['post' => $post->slug]) }}"
     title="View post"
 >

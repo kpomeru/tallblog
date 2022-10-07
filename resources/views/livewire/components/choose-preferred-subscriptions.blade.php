@@ -9,7 +9,7 @@
                 : this.selected.push(id);
         }
     }"
-    class="px-4 md:px-6 py-4 xl:p-8 space-y-2"
+    class="px-4 md:px-6 py-4 xl:p-8 space-y-4"
 >
     <h6>Feel like subscribing to an author(s)</h6>
 

@@ -10,6 +10,9 @@ class ChoosePreferredCategories extends Component
     /** @var array */
     public $categories = [];
 
+    /** @var bool */
+    public $profile = false;
+
     /** @var array */
     public $selected = [];
 
@@ -18,8 +21,9 @@ class ChoosePreferredCategories extends Component
         $this->selected = auth()->user()->categories->pluck('id');
     }
 
-    public function mount()
+    public function mount($profile = false)
     {
+        $this->profile = $profile;
         $this->categories = Category::get()->toArray();
     }
 
@@ -31,6 +35,9 @@ class ChoosePreferredCategories extends Component
     public function save(): void
     {
         auth()->user()->categories()->sync($this->selected);
+        if ($this->profile) {
+            $this->snotify('Preferred categories updated.');
+        }
     }
 
     public function updatedSelected()

@@ -19,6 +19,8 @@
             <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('posts', ['authorPosts' => true]) }}" title="View Posts">My Posts</a>
         @endif
 
+        <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('profile') }}" title="View Posts">Profile</a>
+
         <a class="text-sm block px-3 md:px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-700" href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();" title="Come back soon">Log out</a>
 
         <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

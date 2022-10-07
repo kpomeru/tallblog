@@ -1,7 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostsController;
+use App\Http\Livewire\Page\ProfilePage;
 use App\Http\Livewire\Pages\ChoosePreferencesPage;
-use App\Notifications\NewCommentNotification;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,22 +16,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'welcome')->name('home');
+Route::get('/', [PostsController::class, 'index'])->name('home');
 require __DIR__ . '/auth.php';
 require __DIR__ . '/posts.php';
 
 Route::group(['middleware' => ['auth']], function () {
     require __DIR__ . '/manage.php';
 
+    Route::get('/profile', ProfilePage::class)->name('profile');
+
     Route::get('/preference-selection', ChoosePreferencesPage::class)
         ->middleware('preferred.categories')
         ->name('preference.selection');
-});
-
-
-Route::get('/notification', function () {
-    $comment = \App\Models\Comment::inRandomOrder()->first();
-
-    return (new NewCommentNotification($comment))
-        ->toMail($comment->post->user);
 });

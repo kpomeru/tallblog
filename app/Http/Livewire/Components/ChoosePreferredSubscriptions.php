@@ -20,9 +20,7 @@ class ChoosePreferredSubscriptions extends Component
 
     public function mount()
     {
-        // dd($this->selected);
-        // $subscriptions = User::whereIn('id', $this->selected)->get()->toArray();
-        $this->authors = User::whereIn('role', ['contributor', 'admin'])->whereNotIn('id', $this->selected)->inRandomOrder()->limit(6)->get()->toArray();
+        $this->authors = User::whereIn('role', ['contributor', 'admin'])->has('posts', '>', 2)->whereNotIn('id', $this->selected)->inRandomOrder()->limit(6)->get()->toArray();
     }
 
     public function render()

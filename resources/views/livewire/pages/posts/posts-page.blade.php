@@ -48,6 +48,5 @@
         </div>
 
         {{ $list->links('components.paginate.index') }}
-        {{-- {{ $list->links() }} --}}
     </div>
 </div>

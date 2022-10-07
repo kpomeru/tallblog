@@ -1,5 +1,5 @@
 <template x-teleport="body">
-    <div class="bg-white/50 dark:bg-slate-800/50 min-h-[64px] md:min-h-[80px] flex items-center py-6 md:py-8 lg:py-10 xl:py-16 border-t border-black/5 dark:border-transparent">
+    <div class="bg-white/50 dark:bg-slate-800/50 min-h-[64px] md:min-h-[80px] flex items-center py-6 md:py-8 lg:py-10 xl:py-16 border-t border-black/5 dark:border-slate-700">
         <div
             class="custom__container flex flex-col md:flex-row items-center text-center justify-between space-y-6 md:space-y-0 space-x-6 text-sm">
             <div class="md:text-left flex flex-col md:flex-row md:items-center space-x-1">

@@ -102,7 +102,7 @@ $date_format .= " Y";
 
     <div class="space-y-6">
         <h5 class="text-center text-slate-500">Related posts</h5>
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 divide-x divide-y">
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 divide-x divide-y dark:divide-slate-700">
             @foreach ($related_posts as $related_post)
                 <x-posts.related-card :post="$related_post" />
             @endforeach
