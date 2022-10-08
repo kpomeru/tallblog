@@ -66,7 +66,7 @@
                     </x-form.label>
 
                     @if ($model->user_id !== auth()->id())
-                    <div class="content__styles rounded-md p-4 border dark:border-slate-700">
+                    <div class="content__styles rounded-md p-4 border bg-slate-200 dark:bg-slate-800 dark:border-slate-700">
                         {!! $model->content !!}
                     </div>
                     @else
