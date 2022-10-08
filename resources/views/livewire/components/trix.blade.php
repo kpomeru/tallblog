@@ -1,16 +1,17 @@
 <div
     wire:ignore
     x-data="{
-        dispatchEvent() {
-            this.$dispatch('notify')
-        }
+        disabled: @js($disabled)
+    }"
+    x-init="() => {
+        document.querySelector('trix-editor').editor.element.setAttribute('contentEditable', !disabled)
     }"
 >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
     @vite(['resources/sass/trix-custom.scss',])
 
     <input id="{{ $trix_id }}" type="hidden" name="content" value="{{ $value }}">
-    <trix-editor input="{{ $trix_id }}"></trix-editor>
+    <trix-editor :class="{'trix__disabled': disabled}" input="{{ $trix_id }}"></trix-editor>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <script>

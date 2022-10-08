@@ -20,6 +20,9 @@ class Trix extends Component
     /** @var array<objects> */
     public $files_to_delete = [];
 
+    /** @var bool */
+    public $disabled;
+
     /** @var string */
     public $trix_id;
 
@@ -34,7 +37,9 @@ class Trix extends Component
 
     public function updatedValue($value)
     {
-        $this->emit(self::EVENT_VALUE_UPDATED, $this->value);
+        if (!$this->disabled) {
+            $this->emit(self::EVENT_VALUE_UPDATED, $this->value);
+        }
     }
 
     public function render()

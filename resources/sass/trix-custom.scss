@@ -1,4 +1,5 @@
-trix-toolbar, trix-editor {
+trix-toolbar,
+trix-editor {
     border-color: rgb(203 213 225);
 }
 
@@ -16,6 +17,19 @@ trix-editor {
     border-bottom-right-radius: 6px;
     padding: 16px 24px 16px 24px;
     min-height: 192px;
+
+    &.trix__disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+    }
+
+    .dark & {
+        border-color: transparent;
+
+        &.trix__disabled {
+            border-color: rgb(51, 65, 85);
+        }
+    }
 }
 
 trix-toolbar .trix-button-group {
@@ -34,7 +48,6 @@ trix-toolbar .trix-button {
 
 trix-toolbar .trix-button.trix-active {
     background-color: rgb(199 210 254);
-
 }
 
 .dark trix-toolbar .trix-button.trix-active {

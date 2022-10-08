@@ -175,7 +175,11 @@
     }
 
     trix-editor {
-        @apply bg-white dark:bg-slate-700 dark:border-none overflow-x-scroll;
+        @apply bg-white dark:bg-slate-700 overflow-x-scroll;
+
+        &.trix__disabled {
+            @apply bg-slate-200 dark:bg-slate-800;
+        }
     }
 
     .content__styles {

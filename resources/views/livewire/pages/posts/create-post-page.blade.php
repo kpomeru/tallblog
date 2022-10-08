@@ -65,7 +65,13 @@
                         Content *
                     </x-form.label>
 
-                    <livewire:components.trix :value="$model->content" />
+                    @if ($model->user_id !== auth()->id())
+                    <div class="content__styles rounded-md p-4 border dark:border-slate-700">
+                        {!! $model->content !!}
+                    </div>
+                    @else
+                        <livewire:components.trix :value="$model->content" :disabled="$model->user_id !== auth()->id()" />
+                    @endif
 
                     @error('model.content')
                         <x-form.error :error="$message"></x-form.error>
