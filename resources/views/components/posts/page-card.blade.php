@@ -35,9 +35,11 @@
         </x-badge>
 
         <div class="flex items-center justify-end space-x-2">
+            @if (auth()->check() && (auth()->user()->is_admin || auth()->id() === $post->user_id))
             <x-button.icon-link href="{{ route('edit.post', ['post' => $post]) }}" class="opacity-0 group-hover:opacity-100 !border-none" color="transparent" title="Edit post">
                 <x-heroicon-s-pencil class="w-4" />
             </x-button.icon-link>
+            @endif
 
             <x-button.icon-link href="{{ route('post', ['post' => $post->slug]) }}" class="opacity-0 group-hover:opacity-100 !border-none" color="transparent" title="View post">
                 <x-heroicon-s-arrow-right />

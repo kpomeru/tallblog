@@ -26,7 +26,7 @@
     </head>
 
     <body
-        class="font-sans antialiased bg-slate-100 text-slate-800 dark:bg-slate-900 dark:text-slate-300
+        class="font-sans antialiased bg-slate-100 text-slate-700 dark:bg-slate-900 dark:text-slate-300
             selection:bg-brand-200 dark:selection:text-slate-800 text-sm sm:text-base
         "
     >

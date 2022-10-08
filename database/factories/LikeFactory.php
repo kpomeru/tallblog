@@ -18,7 +18,7 @@ class LikeFactory extends Factory
     public function definition()
     {
         return [
-            'vote' => Arr::random([true, false]),
+            'vote' => Arr::random([true, true, true, false, false]),
         ];
     }
 }
