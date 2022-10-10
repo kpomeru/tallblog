@@ -1,6 +1,6 @@
 @props(['featuredPostsKey', 'post'])
 
-<div {{ $attributes->merge(['class' => "space-y-4 dark:text-slate-400 p-4 md:p-6"]) }}>
+<div {{ $attributes->merge(['class' => "space-y-4 dark:text-slate-400 p-4 md:p-6 w-full"]) }}>
     <div class="flex items-center space-x-2 ">
         <x-badge>
             {{ $post->category->title }}
