@@ -15,5 +15,5 @@
             </span>
         </div>
     </div>
-    {{-- <img src="{{ $author->avatar ?? 'https://i.pravatar.cc/160?' . $author->email }}" class="w-36 rounded-full border-[8px] translate-y-4" :class="selected.includes('{{ $author->id }}') ? 'border-indigo-600' : 'border-white/10'" alt="Author image"> --}}
+    <img src="{{ $author->avatar ?? 'https://i.pravatar.cc/160?' . $author->email }}" class="w-36 rounded-full border-[8px] translate-y-4" :class="selected.includes('{{ $author->id }}') ? 'border-indigo-600' : 'border-white/10'" alt="Author image">
 </div>

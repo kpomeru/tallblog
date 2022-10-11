@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -42,9 +43,7 @@ class AppServiceProvider extends ServiceProvider
             $this->dispatchBrowserEvent('notify', ['type' => 'error', 'message' => "Access Denied, you are not authorized to perform this action."]);
         });
 
-        if (class_exists('App\Models\Category')) {
-            View::share('headerCategories', $this->setMenuCategories());
-        }
+        View::share('headerCategories', class_exists('App\Models\Category') && Schema::hasTable('categories') ? $this->setMenuCategories() : []);
     }
 
     private function setMenuCategories()

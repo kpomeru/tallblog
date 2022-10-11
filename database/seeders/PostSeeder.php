@@ -24,7 +24,7 @@ class PostSeeder extends Seeder
 
         $users = User::inRandomOrder()->pluck('id')->toArray();
 
-        Post::factory()->count(200)
+        Post::factory()->count(100)
             ->sequence(fn ($sequence) => ['image' => $this->set_image($sequence->index)])
             ->has(
                 Comment::factory()
@@ -38,7 +38,7 @@ class PostSeeder extends Seeder
             )
             ->has(
                 Like::factory()->sequence(fn () => ['user_id' => Arr::random($users)])
-                    ->count(rand(10, 20)),
+                    ->count(rand(4, 8)),
                 'likes'
             )
             ->create();
@@ -80,8 +80,8 @@ class PostSeeder extends Seeder
 
     public function truncate_table()
     {
-        DB::table('comments')->truncate();
         DB::table('likes')->truncate();
+        DB::table('comments')->truncate();
         DB::table('posts')->truncate();
     }
 }

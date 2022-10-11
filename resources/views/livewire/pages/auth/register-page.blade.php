@@ -58,10 +58,6 @@
                         <x-heroicon-s-arrow-right wire:loading.remove class="group-hover:translate-x-1 w-4" />
                     </x-button>
                 </div>
-
-                <div>
-                    <x-button.auth.google wire:loading.attr="disabled" />
-                </div>
             </form>
         </x-card>
     </div>
