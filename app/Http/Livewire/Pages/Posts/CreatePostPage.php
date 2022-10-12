@@ -57,7 +57,7 @@ class CreatePostPage extends Component
             'image' => "nullable|image|max:1024",
             'model.category_id' => 'required|string|exists:categories,id',
             'model.content' => 'sometimes',
-            'model.excerpt' => 'required|string|max:200',
+            'model.excerpt' => 'required|string|max:500',
             'model.title' => 'required|string|min:3',
             'model.user_id' => 'required|string|exists:users,id',
             'published' => 'boolean',

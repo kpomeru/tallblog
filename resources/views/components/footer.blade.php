@@ -13,7 +13,7 @@
                     <span>
                         Built with TALL Stack by
                     </span>
-                    <a href="https://kpomeru.vertebradigital.com" target="_blank" class="shrink-0 group">
+                    <a href="https://kpomeru.com" target="_blank" class="shrink-0 group">
                         <x-kp-logo></x-kp-logo>
                     </a>
                 </div>

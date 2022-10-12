@@ -5,6 +5,7 @@ namespace App\Providers;
 use App\Models\Category;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\View;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Component;
@@ -28,6 +29,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        if (env('APP_ENV') === 'production') {
+            URL::forceSchema('https');
+        }
+
         Component::macro('notify', function ($message) {
             $this->dispatchBrowserEvent('notify', ['type' => 'info', 'message' => $message]);
         });

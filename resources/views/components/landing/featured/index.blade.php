@@ -1,10 +1,10 @@
 @props(['featuredPost', 'featuredPosts'])
 
 <div class="bg-white dark:bg-slate-800">
-    <div class="p-4 md:p-6 border border-b-0 dark:border-slate-700 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
+    <div class="p-6 border border-b-0 dark:border-slate-700 grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6">
         <div class="md:col-span-2">
             <a class="hover:text-brand-400" href="{{ route('post', ['post' => $featuredPost]) }}" title="View post">
-                <img src="{{ $featuredPost->image }}" class="rounded-md object-cover h-full" alt="{{ $featuredPost->title }} image">
+                <img src="{{ $featuredPost->image }}" class="rounded-md object-cover h-64 md:h-full" alt="{{ $featuredPost->title }} image">
             </a>
         </div>
         <div class="space-y-4 dark:text-slate-400 self-center">

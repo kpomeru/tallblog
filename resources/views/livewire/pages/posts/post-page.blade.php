@@ -13,7 +13,7 @@ $date_format .= " Y";
 <div class="space-y-6 md:space-y-8 lg:space-y-10 pt-6">
     <div class="custom__container">
         <div class="max-w-screen-md mx-auto space-y-6">
-            <div class="flex items-center justify-between">
+            <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between">
                 <div class="flex items-center space-x-4">
                     <x-avatar
                         class="rounded-full border-2 border-white dark:border-white/10 group-hover:border-brand-400 w-16"
@@ -33,17 +33,19 @@ $date_format .= " Y";
                         </span>
                     </div>
                 </div>
-                <div class="flex items-center justify-end space-x-2">
+                <div class="flex items-center justify-between sm:justify-end space-x-2">
                     <livewire:components.posts.subscribe-to-author :author-id="$post->user->id" />
-                    @if (auth()->check() && (auth()->user()->is_admin || auth()->id() === $post->user_id))
-                    <x-button.icon-link class="shrink-0" href="{{ route('edit.post', ['post' => $post]) }}"
-                        title="Edit/Update Post">
-                        <x-heroicon-m-pencil class="w-4" />
-                    </x-button.icon-link>
-                    @if (auth()->id() === $post->user_id)
-                    <livewire:components.posts.delete-post :post="$post" />
-                    @endif
-                    @endif
+                    <div class="flex items-center space-x-2">
+                        @if (auth()->check() && (auth()->user()->is_admin || auth()->id() === $post->user_id))
+                        <x-button.icon-link class="shrink-0" href="{{ route('edit.post', ['post' => $post]) }}"
+                            title="Edit/Update Post">
+                            <x-heroicon-m-pencil class="w-4" />
+                        </x-button.icon-link>
+                        @if (auth()->id() === $post->user_id)
+                        <livewire:components.posts.delete-post :post="$post" />
+                        @endif
+                        @endif
+                    </div>
                 </div>
             </div>
 
@@ -53,8 +55,8 @@ $date_format .= " Y";
                 <x-badge class="capitalize flip mr-1.5 mb-1.5 dark:flip">
                     {{ $post->category->title }}
                 </x-badge>
-                <span class="px-1 mr-1.5 mb-1.5">|</span>
                 @if (isset($post->tags) && count($post->tags))
+                <span class="px-1 mr-1.5 mb-1.5">|</span>
                 @foreach ($post->tags as $tag)
                 <x-badge class="capitalize mr-1.5 mb-1.5">
                     {{ $tag }}
@@ -72,7 +74,7 @@ $date_format .= " Y";
     <div class="custom__container">
         <div class="max-w-screen-md mx-auto space-y-6">
             <div
-                class="rounded-md bg-white/50 dark:bg-slate-800/50 p-4 md:p-6 lg:p-8 text-lg md:text-xl -mx-6 border-y sm:m-0 sm:border-none">
+                class="sm:rounded-md bg-white/50 dark:bg-slate-800/50 p-4 md:p-6 lg:p-8 text-lg md:text-xl -mx-6 border-y dark:border-none sm:m-0 sm:border-none">
                 {{ $post->excerpt }}
             </div>
 

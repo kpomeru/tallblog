@@ -13,8 +13,4 @@ export default defineConfig({
             valetTls: "tallblog.test",
         }),
     ],
-    // server: {
-    //     host: "https://tallblog.test",
-    //     https: true,
-    // },
 });

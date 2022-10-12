@@ -16,7 +16,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <script>
         const trixEditor = document.getElementById("{{ $trix_id }}")
-        const mimeTypes = ["image/gif", "image/jpeg", "image/jpg", "image/png"];
+        const mimeTypes = ["image/gif", "image/jpeg", "image/jpg", "image/png", "image/svg+xml"];
 
         addEventListener("trix-change", function(event) {
             @this.set('value', trixEditor.getAttribute('value'))

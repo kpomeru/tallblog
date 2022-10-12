@@ -1,5 +1,9 @@
 @section('title', $page_title)
 
+@php
+    // dd($model->image);
+@endphp
+
 
 <div class="custom__container">
     <div class="py-6 md:py-8 xl:py-10 w-full xl:max-w-screen-md space-y-6">
@@ -52,7 +56,7 @@
                         Excerpt *
                     </x-form.label>
 
-                    <x-form.textarea wire:model.lazy="model.excerpt" :disabled="$model->user_id !== auth()->id()" :error="$errors->has('model.excerpt')" id="excerpt" maxlength="200" placeholder="Enter brief post summary"></x-form.textarea>
+                    <x-form.textarea wire:model.lazy="model.excerpt" :disabled="$model->user_id !== auth()->id()" :error="$errors->has('model.excerpt')" id="excerpt" maxlength="500" placeholder="Enter brief post summary"></x-form.textarea>
 
                     @error('model.excerpt')
                         <x-form.error :error="$message"></x-form.error>
@@ -94,7 +98,7 @@
 
                 <div class="space-y-6 xl:space-y-8 xl:fixed right-6 bottom-6 xl:p-6 xl:bg-white dark:xl:bg-slate-800 xl:rounded-md xl:w-80">
                     <div class="space-y-1">
-                        <x-form.file-input wire:model="image" :disabled="$model->user_id !== auth()->id()" id="post-image" :image="$image" :previous-image="$model->image"
+                        <x-form.file-input wire:model="image" :disabled="$model->user_id !== auth()->id()" id="post-image" :image="$image" :previous-image="$mode !== 'create' ? $model->image : null"
                             label="{{ isset($model->image) ? 'Replace Image' : 'Choose Image' }}">
                             <x-slot:clear>
                                 @isset($image)

@@ -2,9 +2,13 @@
 
 @section('content')
     <div class="space-y-6 md:space-y-8 lg:space-y-12 py-6 md:py-8">
-        <div class="custom__container space-y-3">
-            <h5>Featured Posts</h5>
-            <x-landing.featured :featured-post="$featured_post" :featured-posts="$featured_posts"></x-landing.featured>
+        <div class="space-y-3">
+            <div class="custom__container">
+                <h5 class="text-center sm:text-left">Featured Posts</h5>
+            </div>
+            <div class="custom__container p-0 sm:px-6">
+                <x-landing.featured :featured-post="$featured_post" :featured-posts="$featured_posts"></x-landing.featured>
+            </div>
         </div>
 
         <div class="custom__container space-y-3">
