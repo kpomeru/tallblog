@@ -144,7 +144,12 @@ class CreatePostPage extends Component
         }
     }
 
-    public function save()
+    public function save_and_continue()
+    {
+        return $this->save(true);
+    }
+
+    public function save($done = false)
     {
         $this->validate();
 
@@ -173,8 +178,13 @@ class CreatePostPage extends Component
         if ($this->published) {
             $message .= " &amp; published";
         }
-        session()->flash('success', $message);
-        return redirect()->route('post', ['post' => $this->model->slug]);
+
+        if ($done) {
+            session()->flash('success', $message);
+            return redirect()->route('post', ['post' => $this->model->slug]);
+        }
+
+        $this->snotify($message);
     }
 
     public function render()

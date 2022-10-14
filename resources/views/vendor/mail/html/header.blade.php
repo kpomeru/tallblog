@@ -4,8 +4,8 @@
 @if (trim($slot) === 'Laravel')
 <img src="https://laravel.com/img/notification-logo.png" class="logo" alt="Laravel Logo">
 @else
-{{-- {{ $slot }} --}}
-<img src="{{ asset('/images/tallblog-logomark.svg') }}" class="h-16 w-auto" alt="TallBlog Logo" />
+<img src="{{ asset('/images/tallblog-logomark.png') }}" height="64" width="auto" alt="TallBlog Logo" />
+{{-- <img src="https://tallblog.kpomeru.com/images/tallblog-logomark.png" height="64" width="auto" alt="TallBlog Logo" /> --}}
 @endif
 </a>
 </td>

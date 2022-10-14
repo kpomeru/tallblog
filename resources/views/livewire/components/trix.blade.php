@@ -8,7 +8,7 @@
     }"
 >
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
-    @vite(['resources/sass/trix-custom.scss',])
+    @vite(['resources/sass/trix-custom.scss'])
 
     <input id="{{ $trix_id }}" type="hidden" name="content" value="{{ $value }}">
     <trix-editor :class="{'trix__disabled': disabled}" input="{{ $trix_id }}"></trix-editor>

@@ -78,7 +78,7 @@ $date_format .= " Y";
                 {{ $post->excerpt }}
             </div>
 
-            <div class="content__styles py-6 mg:py-8 lg:py-10">
+            <div class="content__styles markdown-content py-6 mg:py-8 lg:py-10">
                 {!! $post->content !!}
             </div>
 

@@ -19,7 +19,7 @@
         @endif
 
         <x-card>
-            <form wire:submit.prevent="save" class="space-y-6 relative">
+            <form class="space-y-6 relative">
                 <div class="space-y-1">
                     <x-form.label for="title">
                         Title *
@@ -141,17 +141,29 @@
                     </div>
                     @endif
 
-                    <div class="flex xl:justify-between space-x-2 pt-6 xl:pt-4">
-                        <x-button.back />
+                    <div class="flex xl:justify-between pt-6 xl:pt-4">
+                        <x-button.back class="xl:hidden mr-2" />
 
-                        <x-button wire:loading.attr="disabled" class="group xl:w-full" type="submit"
-                            title="Update category">
-                            <x-spinner wire:loading.delay wire:target="save" />
-                            <span wire:target="save" wire:loading.remove>
-                                {{ $mode === 'edit' ? 'Save Changes' : ($published ? 'Save & Publish' : 'Save Draft') }}
-                            </span>
-                            <x-heroicon-s-arrow-right wire:target="save" wire:loading.remove
-                                class="group-hover:translate-x-1 w-4" />
+                        <x-button wire:click.prevent="save" wire:loading.attr="disabled" wire:target="save" color="light" class="group mr-2" type="submit"
+                            title="Save">
+                            <div class="flex items-center">
+                                <x-spinner wire:loading.delay wire:target="save" class="mr-2" />
+                                <span wire:target="save" wire:loading.remove>
+                                    Save
+                                </span>
+                            </div>
+                        </x-button>
+
+                        <x-button wire:click.prevent="save_and_continue" wire:loading.attr="disabled" wire:target="save_and_continue" class="group xl:w-full" type="submit"
+                            title="Save and continue">
+                            <div class="flex items-center">
+                                <x-spinner wire:loading.delay wire:target="save_and_continue" />
+                                <span wire:target="save_and_continue" wire:loading.remove>
+                                    {{ $mode === 'edit' ? 'Save' : ($published ? 'Save, Publish' : 'Save Draft') }} & Continue
+                                </span>
+                                <x-heroicon-s-arrow-right wire:target="save_and_continue" wire:loading.remove
+                                    class="group-hover:translate-x-1 w-4" />
+                            </div>
                         </x-button>
                     </div>
                 </div>

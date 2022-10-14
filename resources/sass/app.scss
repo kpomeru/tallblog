@@ -171,7 +171,7 @@
     }
 
     trix-toolbar {
-        @apply bg-white dark:bg-slate-700 border border-b-0 dark:border-0 p-4 py-6 rounded-t-md;
+        @apply bg-white dark:bg-slate-700 border border-b-0 dark:border-0 p-4 py-6 rounded-t-md sticky top-14 md:top-[72px];
     }
 
     trix-editor {
@@ -179,6 +179,10 @@
 
         &.trix__disabled {
             @apply bg-slate-200 dark:bg-slate-800;
+        }
+
+        pre, blockquote {
+            @apply bg-slate-100 dark:bg-slate-900/25;
         }
     }
 
@@ -193,6 +197,10 @@
                     }
                 }
             }
+        }
+
+        pre, blockquote {
+            @apply bg-slate-200/50 dark:bg-slate-800/50;
         }
     }
 
@@ -225,6 +233,14 @@
                     @apply text-center text-sm text-slate-500 py-3;
                 }
             }
+        }
+
+        pre {
+            @apply text-xs leading-6 p-2 sm:p-4 rounded text-indigo-500 dark:text-purple-300 whitespace-pre-wrap;
+        }
+
+        blockquote {
+            @apply p-2 sm:p-4 text-lg border-l-2 sm:border-l-4 border-indigo-500 italic;
         }
     }
 

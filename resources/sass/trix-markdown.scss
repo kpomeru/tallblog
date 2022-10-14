@@ -1,0 +1,91 @@
+.markdown-content {
+    /* change according to need... */
+    pre code {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
+
+    div,
+    p,
+    pre,
+    blockquote,
+    ol,
+    ul {
+        margin-bottom: 1.5rem;
+    }
+
+    h1,
+    h2,
+    h3 {
+        color: #1a202c;
+        font-size: 2rem;
+        font-weight: bold;
+        margin-top: 0;
+        margin-bottom: 0.75rem;
+        line-height: 1.2;
+    }
+    strong {
+        font-weight: bold;
+    }
+    blockquote {
+        display: block;
+        border-left: 4px solid #667eea;
+        padding-left: 0.8em;
+        font-size: 1.25rem;
+        font-style: italic;
+        font-weight: 400;
+    }
+    a {
+        color: #667eea;
+        text-decoration: underline;
+        text-decoration-color: hsla(229, 76%, 66%, 0.3);
+        -moz-text-decoration-color: hsla(229, 76%, 66%, 0.3);
+    }
+    a:hover {
+        text-decoration-color: hsla(229, 76%, 66%, 1);
+        -moz-text-decoration-color: hsla(229, 76%, 66%, 1);
+    }
+
+    ol,
+    ul {
+        display: block;
+    }
+
+    li {
+        position: relative;
+        padding-left: 1.5em;
+        margin-bottom: 1rem;
+    }
+    ul li:before {
+        position: absolute;
+        top: 10px;
+        left: 0;
+        content: "";
+        width: 0.4em;
+        height: 0.4em;
+        background-color: #667eea;
+        border-radius: 50%;
+        display: inline-block;
+    }
+
+    ol {
+        counter-reset: custom-counter;
+    }
+    ol li:before {
+        counter-increment: custom-counter;
+        position: absolute;
+        top: 2px;
+        left: 0;
+        content: counter(custom-counter) ".";
+        display: inline-block;
+        font-size: 0.85em;
+        font-weight: 500;
+        color: #667eea;
+        text-align: right;
+    }
+
+    .hide__caption figcaption,
+    .hide__caption figcaption {
+        display: none;
+    }
+}
