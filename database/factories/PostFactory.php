@@ -30,7 +30,7 @@ class PostFactory extends Factory
             'created_at' => $created,
             'excerpt' => fake()->text(),
             'featured_at' => Arr::random([true, false, false, false]) ? fake()->dateTimeBetween($created) : null,
-            'published_at' => Arr::random([true, false, false, false]) ? fake()->dateTimeBetween($created) : null,
+            'published_at' => Arr::random([true, true, false]) ? fake()->dateTimeBetween($created) : null,
             'slug' =>  str()->snake($title, '-'),
             'tags' => fake()->words(rand(2, 6)),
             'title' =>  $title,

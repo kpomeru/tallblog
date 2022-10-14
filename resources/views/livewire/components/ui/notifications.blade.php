@@ -56,10 +56,6 @@
             },
         }"
         x-init="() => {
-            document.getElementById('notifications__container').addEventListener('own-notify', (e) => {
-                console.log(e.detail);
-            })
-
             if (msg) {
                 message = msg;
                 triggerInterval();
@@ -98,7 +94,6 @@
         @mouseover="toggleMouseOver(true)"
         @mouseover.away="toggleMouseOver(false)"
         @notify.window="($event) => {
-            console.log($event)
             let nmsg = $event.detail;
             type = nmsg.type;
             message = nmsg.message;

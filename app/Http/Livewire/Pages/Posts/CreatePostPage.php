@@ -80,6 +80,9 @@ class CreatePostPage extends Component
     public function trix_value_updated($value)
     {
         $this->model->content = $value;
+        if ($this->mode === 'edit') {
+            $this->model->update(['content' =>  $this->model->content]);
+        }
     }
 
     public function set_data()

@@ -20,7 +20,7 @@ class PostSeeder extends Seeder
      */
     public function run()
     {
-        $this->truncate_table();
+        // $this->truncate_table();
 
         $users = User::inRandomOrder()->pluck('id')->toArray();
 

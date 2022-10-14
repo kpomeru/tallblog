@@ -187,6 +187,10 @@
     }
 
     .content__styles {
+        a {
+            @apply cursor-pointer;
+        }
+        
         .attachment {
             a {
                 .attachment__caption {
@@ -206,13 +210,17 @@
 
     .content__styles,
     trix-editor {
+        a {
+            @apply underline font-medium hover:text-brand-400;
+        }
+
         h1 {
             @apply text-xl font-semibold;
         }
 
         ol,
         ul {
-            @apply list-inside;
+            @apply pl-3.5 marker:text-indigo-500;
         }
 
         ul {

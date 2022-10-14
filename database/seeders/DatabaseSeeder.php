@@ -15,16 +15,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('likes')->truncate();
-        DB::table('comments')->truncate();
-        DB::table('posts')->truncate();
-        DB::table('categories')->truncate();
-        DB::table('users')->truncate();
+        // DB::table('likes')->truncate();
+        // DB::table('comments')->truncate();
+        // DB::table('posts')->truncate();
+        // DB::table('categories')->truncate();
+        // DB::table('users')->truncate();
 
-        $this->call([
-            UserSeeder::class,
-            CategorySeeder::class,
-            PostSeeder::class,
-        ]);
+        // $this->call([
+        //     UserSeeder::class,
+        //     CategorySeeder::class,
+        //     PostSeeder::class,
+        // ]);
     }
 }
