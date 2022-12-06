@@ -49,14 +49,12 @@
                     @enderror
                 </div>
 
-
-
                 <div class="space-y-1">
                     <x-form.label for="excerpt">
                         Excerpt *
                     </x-form.label>
 
-                    <x-form.textarea wire:model.lazy="model.excerpt" :disabled="$model->user_id !== auth()->id()" :error="$errors->has('model.excerpt')" id="excerpt" maxlength="500" placeholder="Enter brief post summary"></x-form.textarea>
+                    <x-form.textarea wire:model.lazy="model.excerpt" :count="str()->length($model->excerpt)" :disabled="$model->user_id !== auth()->id()" :error="$errors->has('model.excerpt')" id="excerpt" maxlength="200" placeholder="Enter brief post summary"></x-form.textarea>
 
                     @error('model.excerpt')
                         <x-form.error :error="$message"></x-form.error>
